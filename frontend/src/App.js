@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import MovieDetails from './pages/MovieDetails';
 import SeatSelection from './pages/SeatSelection';
@@ -16,9 +17,9 @@ const App = () => {
   return (
     <Router>
       <AuthProvider>
-        <div className="min-h-screen bg-gray-100">
+        <div className="min-h-screen bg-gray-100 flex flex-col">
           <Navbar />
-          <div className="container mx-auto px-4 py-8">
+          <div className="container mx-auto px-4 py-8 flex-grow">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/movie/:id" element={<MovieDetails />} />
@@ -58,6 +59,7 @@ const App = () => {
               />
             </Routes>
           </div>
+          <Footer />
         </div>
       </AuthProvider>
     </Router>
