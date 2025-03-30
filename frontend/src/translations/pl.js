@@ -10,32 +10,36 @@ const pl = {
     register: 'Rejestracja',
     logout: 'Wyloguj'
   },
-  
+
   // Home Page
   home: {
     hero: {
       welcome: 'Witamy w Cinema Tickets',
       tagline: 'Twoje najlepsze miejsce na najnowsze hity filmowe',
       browseBtn: 'Przeglądaj Wszystkie Filmy',
-      subtitle: "Ciesz się niezapomnianym doświadczeniem kinowym, jak nigdy dotąd." // NEW KEY
+      subtitle: "Ciesz się niezapomnianym doświadczeniem kinowym, jak nigdy dotąd."
     },
     about: {
       title: 'Doświadcz Filmów Jak Nigdy Wcześniej',
       p1: 'Witamy w naszym nowoczesnym kinie, gdzie magia filmu ożywa! Od 2005 roku stawiamy na zapewnienie najlepszych wrażeń filmowych dzięki najnowszej technologii i niezrównanemu komfortowi.',
-      p2: 'Nasze sale kinowe oferują krystalicznie czystą projekcję, immersyjny dźwięk Dolby Atmos oraz luksusowe fotele, które odmieniają Twoje doświadczenie oglądania filmu. Niezależnie od tego, czy jesteś miłośnikiem kina, czy szukasz idealnego miejsca na randkę – nasze kino spełni Twoje oczekiwania.',
+      p2: 'Nasze sale kinowe oferują krystalicznie czystą projekcję, immersyjny dźwięk Dolby Atmos oraz luksusowe fotele – idealne zarówno na randkę, jak i na wspólne seanse z rodziną.',
       learnMore: 'Dowiedz Się Więcej',
-      description1: "Nasze kino zostało zaprojektowane, aby ożywić magię filmów.", // NEW KEY
-      description2: "Posiadamy najnowocześniejsze systemy dźwięku i projekcji, by zapewnić niezapomniane wrażenia.", // NEW KEY
-      learnMoreBtn: "Dowiedz się więcej" // NEW KEY
+      // Optional extra descriptions merged here
+      details: [
+        "Nasze kino zostało zaprojektowane, aby ożywić magię filmów.",
+        "Posiadamy najnowocześniejsze systemy dźwięku i projekcji, by zapewnić niezapomniane wrażenia."
+      ],
+      description1: "Nasze kino zostało zaprojektowane, aby ożywić magię filmów.",
+      description2: "Posiadamy najnowocześniejsze systemy dźwięku i projekcji, by zapewnić niezapomniane wrażenia.",
+      learnMoreBtn: "Dowiedz się więcej"
     },
     nowShowing: {
       title: 'Aktualnie Gramy',
       viewAll: 'Zobacz Wszystkie Filmy',
       bookNow: 'Zarezerwuj',
-      mins: 'min',
-      viewAllBtn: "Zobacz wszystkie filmy", // NEW KEY
-      bookNowBtn: "Zarezerwuj",          // NEW KEY
-      noMovies: "Aktualnie brak filmów w repertuarze." // NEW KEY
+      viewAllBtn: "Zobacz wszystkie filmy",
+      bookNowBtn: "Zarezerwuj",
+      noMovies: "Aktualnie brak filmów w repertuarze."
     },
     why: {
       title: 'Dlaczego Warto Wybrać Nasze Kino',
@@ -46,11 +50,11 @@ const pl = {
         },
         concessions: {
           title: 'Ekskluzywny Bufet',
-          desc: 'Wyśmienity popcorn, piwa rzemieślnicze i przekąski przygotowywane przez szefa kuchni'
+          desc: 'Wyśmienity popcorn, piwa rzemieślnicze oraz przekąski przygotowywane przez szefa kuchni'
         },
         seating: {
           title: 'Luksusowe Fotele',
-          desc: 'Rozkładane fotele skórzane z dodatkową przestrzenią dla nóg oraz osobistymi stolikami'
+          desc: 'Rozkładane fotele skórzane z dodatkową przestrzenią na nogi oraz osobistymi stolikami'
         },
         sound: {
           title: 'Dolby Atmos',
@@ -59,43 +63,50 @@ const pl = {
       }
     },
     features: {
-      title: "Funkcje Kina", // NEW KEY
-      latest: "Najnowsze Premiery", // New or updated
-      latestDesc: "Doświadcz najnowszych hitów filmowych w oszałamiającej jakości", // New or updated
-      concessions: "Ekskluzywny Bufet", // New or updated
-      concessionsDesc: "Wyśmienity popcorn, piwa rzemieślnicze i przekąski przygotowywane przez szefa kuchni", // New or updated
-      seating: "Luksusowe Fotele", // New or updated
-      seatingDesc: "Rozkładane fotele skórzane z dodatkową przestrzenią dla nóg oraz osobistymi stolikami", // New or updated
-      sound: "Dolby Atmos", // New or updated
-      soundDesc: "Technologia dźwięku, która przenosi Cię w środek akcji" // New or updated
+      title: "Funkcje Kina",
+      latest: "Najnowsze Premiery",
+      latestDesc: "Doświadcz najnowszych hitów filmowych w oszałamiającej jakości",
+      concessions: "Ekskluzywny Bufet",
+      concessionsDesc: "Wyśmienity popcorn oraz szeroki wybór przekąsek i napojów",
+      seating: "Luksusowe Fotele",
+      seatingDesc: "Fotele z dodatkową przestrzenią i osobistymi stolikami",
+      sound: "Dolby Atmos",
+      soundDesc: "Zanurz się w technologii dźwięku przenoszącego Cię w centrum akcji"
     },
     newsletter: {
       title: 'Bądź na bieżąco z najnowszymi premierami',
-      desc: 'Zapisz się do naszego newslettera, aby otrzymywać informacje o nowych filmach, specjalnych ofertach oraz ekskluzywnych wydarzeniach.',
+      desc: 'Zapisz się do naszego newslettera, aby otrzymywać wiadomości o nowych filmach, specjalnych ofertach i ekskluzywnych wydarzeniach.',
       placeholder: 'Wpisz swój adres e-mail',
       button: 'Subskrybuj',
-      subscribeBtn: "Subskrybuj teraz", // NEW KEY
-      description: "Nie przegap najnowszych aktualizacji i specjalnych ofert. Zapisz się do naszego newslettera już dziś." // NEW KEY
+      subscribeBtn: "Subskrybuj teraz",
+      description: "Nie przegap aktualności i specjalnych ofert – zapisz się do naszego newslettera już dziś."
     },
     error: {
-      tryAgainBtn: 'Spróbuj ponownie', // NEW KEY
-      titleCollection: 'Nie można załadować kolekcji' // NEW KEY
+      tryAgainBtn: 'Spróbuj ponownie',
+      titleCollection: 'Nie można załadować kolekcji'
     }
   },
-  
+
   // Movies Page
   movies: {
     title: 'Nasza Kolekcja Filmów',
-    subtitle: 'Odkryj naszą starannie wyselekcjonowaną kolekcję najnowszych hitów, ponadczasowych klasyków oraz niezależnych perełek. Znajdź swój następny ulubiony film i zarezerwuj bilety online.',
+    subtitle: 'Odkryj starannie wyselekcjonowaną kolekcję najnowszych hitów, klasyków oraz niezależnych perełek. Znajdź swój następny ulubiony film i zarezerwuj bilety online.',
     search: 'Szukaj filmów...',
-    genres: 'Wszystkie Gatunki',
+    // Remove duplicate "genres" string – use object instead:
+    genres: {
+      all: "Wszystkie Gatunki",
+      action: "Akcja",
+      comedy: "Komedia",
+      drama: "Dramat",
+      horror: "Horror",
+      'sci-fi': "Sci-Fi",
+      animation: "Animacja"
+    },
     sort: {
       latest: 'Najnowsze premiery',
       az: 'A-Z',
       za: 'Z-A',
-      rating: 'Najwyżej oceniane',
-      "a-z": "A-Z", // NEW KEY
-      "z-a": "Z-A"  // NEW KEY
+      rating: 'Najwyżej oceniane'
     },
     nowShowing: 'Tylko aktualnie grane',
     results: {
@@ -103,103 +114,94 @@ const pl = {
       plural: 'filmów znalezionych'
     },
     result: {
-      multiple: "Wiele filmów znalezionych" // NEW KEY
+      multiple: "Wiele filmów znalezionych"
     },
     noResults: {
       title: 'Nie znaleziono filmów',
       message: 'Spróbuj zmienić kryteria wyszukiwania lub filtru'
     },
     hero: {
-      title: "Polecane Filmy", // NEW KEY
-      description: "Odkryj nasze najnowsze hity oraz ponadczasowe klasyki." // NEW KEY
+      title: "Polecane Filmy",
+      description: "Odkryj nasze najnowsze hity oraz klasyki."
     },
-    showingOnly: "Aktualnie Gramy", // NEW KEY
-    bookNow: "Zarezerwuj", // NEW KEY
-    genres: {
-      all: "Wszystkie Gatunki", // NEW KEY
-      action: "Akcja", // NEW KEY
-      comedy: "Komedia", // NEW KEY
-      drama: "Dramat", // NEW KEY
-      horror: "Horror", // NEW KEY
-      "sci-fi": "Sci-Fi", // NEW KEY
-      animation: "Animacja" // NEW KEY
-    },
-    exploreCollection: 'Przeglądaj Kolekcję' // NEW KEY
+    showingOnly: "Aktualnie Gramy",
+    bookNow: "Zarezerwuj",
+    exploreCollection: 'Przeglądaj Kolekcję'
   },
-  
+
   // About Page
   about: {
     hero: {
       title: 'O Cinema Tickets',
-      subtitle: 'Tworzymy niezapomniane filmowe doświadczenia od 1985 roku'
+      subtitle: 'Tworzymy niezapomniane doświadczenia filmowe od 1985 roku'
     },
     story: {
       title: 'Nasza Historia',
-      p1: 'Cinema Tickets rozpoczęło swoją działalność jako małe kino rodzinne w 1985 roku, z pasją do przybliżania magii kina naszej społeczności. To, co zaczęło się jako skromne kino z dwoma salami, stało się wiodącą destynacją filmową, jaką znamy dzisiaj.',
-      p2: 'Nasze zaangażowanie w jakość nigdy nie ustaje. Od bycia jednym z pierwszych kin w regionie, które przeszły na projekcję cyfrową, po niedawne renowacje z luksusowymi fotelami – zawsze idziemy z duchem czasu, zachowując ciepłą i przyjazną atmosferę.',
-      p3: 'Przez dekady zmian w przemyśle filmowym, nasza misja pozostaje niezmienna: zapewniać wyjątkowe doświadczenia kinowe, prezentować różnorodność filmów oraz tworzyć przestrzeń, w której społeczność może wspólnie cieszyć się sztuką opowiadania historii.',
+      p1: 'Cinema Tickets zaczęło jako małe kino rodzinne w 1985 roku, z pasją do przybliżania magii kina społeczności.',
+      p2: 'Od skromnych początków z dwoma salami do nowoczesnego kompleksu – stale podążamy za duchem czasu, zachowując przyjazną atmosferę.',
+      p3: 'Nasza misja pozostaje niezmienna: dostarczać wyjątkowe doświadczenia, prezentować różnorodność filmów i budować społeczność miłośników kina.',
       experience: 'filmowych doznań',
-      years: "Lata doświadczenia", // NEW KEY
-      excellence: "Dziedzictwo filmowej doskonałości" // NEW KEY
+      years: "Lata doświadczenia",
+      excellence: "Dziedzictwo filmowej doskonałości"
     },
     journey: {
       title: 'Nasza Droga'
     },
     timeline: {
-      title: "Nasza Oś Czasu", // NEW KEY
-      milestones: { // NEW KEY
+      title: "Nasza Oś Czasu",
+      milestones: {
         "1985": {
           title: "Wielkie Otwarcie",
-          description: "Nasze kino otworzyło drzwi zaledwie z dwoma salami oraz wizją dostarczania wysokiej jakości filmów dla społeczności."
+          description: "Kino otworzyło się z dwoma salami i wizją wysokiej jakości filmów."
         },
         "1995": {
           title: "Pierwsza Ekspansja",
-          description: "Rozszerzyliśmy naszą ofertę do 6 sal kinowych i wprowadziliśmy pierwsze audytorium z certyfikatem THX."
+          description: "Rozszerzyliśmy ofertę do 6 sal kinowych z certyfikowanym audytorium THX."
         },
         "2005": {
           title: "Cyfrowa Rewolucja",
-          description: "Byliśmy jednymi z pierwszych kin w regionie, które całkowicie przeszły na cyfrową projekcję."
+          description: "Przeszliśmy całkowicie na cyfrową projekcję."
         },
         "2012": {
           title: "Luksusowa Renowacja",
-          description: "Kompletna renowacja z rozkładanymi fotelami, rozszerzonym bufetem oraz premium doświadczeniem kinowym."
+          description: "Renowacja z rozkładanymi fotelami i rozszerzonym bufetem."
         },
         "2020": {
           title: "Innowacja Online",
-          description: "Uruchomiliśmy naszą platformę streamingową i wirtualne kino w odpowiedzi na globalne wyzwania."
+          description: "Uruchomienie platformy streamingowej i wirtualnego kina."
         },
         "Today": {
           title: "Ciągła Doskonałość",
-          description: "Dalej zapewniamy najwyższe doświadczenia kinowe z najnowszą technologią i komfortem."
+          description: "Najwyższe doświadczenia kinowe z najnowszą technologią."
         }
       }
     },
     team: {
       title: 'Poznaj Nasz Zespół',
-      members: [ // updated placeholder data with image URLs
+      members: [
         {
           name: "Sarah Johnson",
           role: "Dyrektor Generalny",
           image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=387&q=80",
-          bio: "Sarah ma z nami 10 lat doświadczenia i wnosi ponad 15 lat doświadczenia w zarządzaniu kinem."
+          bio: "Sarah ma 10 lat doświadczenia i wnosi ponad 15 lat w zarządzaniu kinem."
         },
         {
           name: "Michael Chen",
           role: "Dyrektor Techniczny",
           image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=387&q=80",
-          bio: "Michael dba o to, aby nasze systemy projekcyjne i dźwiękowe zapewniały niezapomniane doświadczenia kinowe."
+          bio: "Michael dba o nasze systemy projekcyjne i dźwiękowe."
         },
         {
           name: "Jessica Rodriguez",
           role: "Koordynator Wydarzeń",
           image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=461&q=80",
-          bio: "Jessica organizuje nasze specjalne pokazy, premiery i wydarzenia filmowe dla społeczności."
+          bio: "Jessica organizuje specjalne pokazy i wydarzenia filmowe."
         },
         {
           name: "David Wilson",
           role: "Kierownik ds. Gastronomii",
           image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=387&q=80",
-          bio: "David dba o naszą wyrafinowaną ofertę bufetową oraz o najwyższej klasy doświadczenia restauracyjne w kinie."
+          bio: "David odpowiada za nasz bufet i doświadczenia kulinarne."
         }
       ]
     },
@@ -207,58 +209,54 @@ const pl = {
       title: 'Nasze Udogodnienia',
       auditoriums: {
         title: 'Luksusowe Sale',
-        desc: 'Nasze 8 nowoczesnych sal kinowych wyposażone jest w projekcję laserową 4K, system dźwięku Dolby Atmos i ultra komfortowe fotele z dużą przestrzenią dla nóg.',
-        description: "Nasze 8 nowoczesnych sal kinowych wyposażonych jest w projekcję laserową 4K, dźwięk Dolby Atmos oraz ultra komfortowe fotele, aby zapewnić niezapomniane wrażenia."
+        desc: '8 nowoczesnych sal kinowych z projekcją laserową 4K, systemem Dolby Atmos i ultra komfortowymi fotelami.',
+        description: "Nowoczesne sale z 4K projekcją, Dolby Atmos i wygodnymi fotelami."
       },
       concessions: {
         title: 'Gourmet Bufet',
-        desc: 'Wyjdź poza tradycyjny popcorn dzięki naszemu menu gourmet, piwom rzemieślniczym, wyszukanym koktajlom oraz doskonałej kawiarni.',
-        description: "Rozkoszuj się wyrafinowanym wyborem popcornu, przekąsek i szerokiej gamy orzeźwiających napojów w naszym bufecie."
+        desc: 'Menu gourmet, piwa rzemieślnicze, wyszukane koktajle oraz doskonała kawiarnia.',
+        description: "Wyrafinowany wybór przekąsek i orzeźwiających napojów."
       },
       lounge: {
         title: 'Strefa Rozrywki',
-        desc: 'Nasze przestronne lobby obejmuje salon gier, wygodne miejsca do oczekiwania oraz bar, gdzie możesz odpocząć przed lub po filmie.',
-        description: "Zrelaksuj się w naszej strefie rozrywki, która oferuje gry arcade, wygodne fotele i przyjazną atmosferę."
+        desc: 'Lobby z salą gier, wygodnymi miejscami do oczekiwania oraz barem.',
+        description: "Strefa rozrywki z grami arcade i przyjazną atmosferą."
       }
     },
     faq: {
       title: 'Najczęściej Zadawane Pytania',
       more: 'Masz więcej pytań? Skontaktuj się z naszą obsługą klienta.',
       contact: 'Skontaktuj się',
-      moreQuestions: "Masz więcej pytań? Skontaktuj się z naszym zespołem wsparcia.",
+      moreQuestions: "Masz więcej pytań? Skontaktuj się z naszym wsparciem.",
       contactUs: "Skontaktuj się",
-      items: [ // NEW KEY: FAQ placeholders (Polish)
+      items: [
         {
           question: "Jakie są wasze godziny otwarcia?",
-          answer: "Otwieramy codziennie o 10:00. Ostatni seans zazwyczaj zaczyna się około 22:30, ale może się różnić w zależności od długości filmu i specjalnych wydarzeń."
+          answer: "Otwieramy codziennie o 10:00. Ostatni seans zaczyna się około 22:30, w zależności od filmu i specjalnych wydarzeń."
         },
         {
           question: "Czy oferujecie zniżki dla studentów lub seniorów?",
-          answer: "Tak! Oferujemy bilety w obniżonych cenach dla studentów, seniorów (65+), personelu wojskowego oraz dzieci poniżej 12 lat. Proszę zabrać ważny dowód tożsamości do weryfikacji."
+          answer: "Tak! Oferujemy bilety w obniżonych cenach dla studentów, seniorów (65+), wojskowych oraz dzieci poniżej 12 lat. Proszę zabrać dowód tożsamości."
         },
         {
-          question: "Czy dozwolone jest jedzenie i picie z zewnątrz?",
-          answer: "Jedzenie i napoje spoza kina nie są dozwolone, ponieważ oferujemy szeroki wybór przekąsek – od tradycyjnego popcornu po wykwintne opcje i pełnoprawny bar."
+          question: "Czy jedzenie i napoje z zewnątrz są dozwolone?",
+          answer: "Nie. Oferujemy szeroki wybór przekąsek – od tradycyjnego popcornu po wyszukane opcje w naszym barze."
         },
         {
-          question: "Jak wcześnie powinienem przybyć przed seans?",
-          answer: "Zalecamy przybycie 15-20 minut przed rozpoczęciem seansu, aby znaleźć miejsce i skorzystać z bufetu. Przy seansach premium i wieczorach otwarcia zalecamy 30 minut."
+          question: "Jak wcześnie przybyć przed seansem?",
+          answer: "Zalecamy przybycie 15-20 minut wcześniej, a przy premierach – 30 minut."
         },
         {
-          question: "Czy posiadacie opcje dostępności?",
-          answer: "Tak, nasze kino jest w pełni dostępne, oferując miejsca dla osób na wózkach, urządzenia wspomagające słyszenie oraz napisy dla osób niesłyszących dostępne na życzenie."
+          question: "Czy kino jest dostępne?",
+          answer: "Tak, oferujemy miejsca dla osób na wózkach, urządzenia wspomagające słyszenie i napisy dla niesłyszących."
         }
       ]
     },
     visit: {
       title: 'Odwiedź Nas',
-      desc: 'Doświadcz magii kina w niezrównanym komforcie. Od hitów filmowych po niezależne perełki – mamy filmy dla każdego.',
-      address: 'Adres',
-      phone: 'Telefon',
-      hours: 'Godziny otwarcia',
-      timespan: 'Poniedziałek - Niedziela: 10:00 - 23:00',
+      desc: 'Doświadcz magii kina w komfortowych warunkach. Od hitów filmowych po niezależne perełki – mamy coś dla każdego.',
       button: 'Zobacz seanse',
-      description: "Doświadcz magii kina dzięki różnorodnej ofercie filmowej i luksusowym udogodnieniom.",
+      description: "Doświadcz magii kina z luksusowymi udogodnieniami.",
       address: {
         title: "Lokalizacja",
         description: "Ulica Kina 123, Miasto Filmowe, Kraj"
@@ -275,13 +273,13 @@ const pl = {
     },
     cta: {
       title: 'Doświadcz kina na najwyższym poziomie',
-      desc: 'Dołącz do nas i przeżyj niezapomniane doświadczenie filmowe dzięki najnowszym produkcjom, luksusowemu komfortowi oraz nowoczesnej technologii.',
+      desc: 'Dołącz do nas i przeżyj niezapomniane doświadczenia filmowe dzięki najnowszym produkcjom i luksusowemu komfortowi.',
       viewMovies: 'Zobacz Filmy',
       contactUs: 'Skontaktuj się',
-      description: "Rozpocznij swoją filmową podróż z nami i zanurz się w niezapomnianych doświadczeniach kinowych."
+      description: "Rozpocznij filmową podróż i zanurz się w kinowych emocjach."
     }
   },
-  
+
   // Common phrases
   common: {
     loading: 'Ładowanie...',
@@ -289,7 +287,30 @@ const pl = {
       title: 'Błąd',
       tryAgain: 'Spróbuj ponownie'
     },
-    signedInAs: 'Zalogowany jako:'
+    signedInAs: 'Zalogowany jako:',
+    days: {
+      mon: "Pon",
+      tue: "Wt",
+      wed: "Śr",
+      thu: "Czw",
+      fri: "Pt",
+      sat: "Sob",
+      sun: "Niedz"
+    },
+    months: {
+      jan: "Styczeń",
+      feb: "Luty",
+      mar: "Marzec",
+      apr: "Kwiecień",
+      may: "Maj",
+      jun: "Czerwiec",
+      jul: "Lipiec",
+      aug: "Sierpień",
+      sep: "Wrzesień",
+      oct: "Październik",
+      nov: "Listopad",
+      dec: "Grudzień"
+    }
   },
 
   // Language switcher
@@ -302,7 +323,7 @@ const pl = {
 
   // Footer
   footer: {
-    text: "© 2025 Cinema Tickets. Wszystkie prawa zastrzeżone." // New or updated key
+    text: "© 2025 Cinema Tickets. Wszystkie prawa zastrzeżone."
   },
 
   // Login Page
@@ -315,7 +336,7 @@ const pl = {
   },
 
   // Register Page
-  register: { // NEW KEYS for register page placeholders
+  register: {
     usernamePlaceholder: "Wpisz swoją nazwę użytkownika",
     emailPlaceholder: "Wpisz swój adres e-mail",
     passwordPlaceholder: "Wpisz swoje hasło",
@@ -323,11 +344,13 @@ const pl = {
     alreadyHaveAccount: "Masz już konto?"
   },
 
-  // Movie Page
+  // Movie Page (details)
   movie: {
-    description: "Opis", // NEW KEY
+    description: "Opis",
     showtimes: "Seanse",
-    selectSeats: "Wybierz miejsca"
+    selectSeats: "Wybierz miejsca",
+    availableShowtimes: "Dostępne Seanse",
+    noShowtimes: "Brak dostępnych seansów"
   },
 
   // Profile Page
@@ -336,14 +359,15 @@ const pl = {
     myTickets: "Moje Bilety",
     noTickets: "Brak biletów",
     downloadTicket: "Pobierz bilet",
-    paymentSuccess: "Płatność powiodła się!" // NEW KEY
+    paymentSuccess: "Płatność powiodła się!"
   },
 
   // Seat Selection
   seatSelection: {
     title: "Wybierz swoje miejsca",
     noSeatSelected: "Nie wybrano żadnego miejsca",
-    confirmButton: "Potwierdź wybór"
+    confirmButton: "Potwierdź wybór",
+    fetchError: "Nie udało się załadować informacji o miejscach"
   },
 
   // Checkout
@@ -357,16 +381,19 @@ const pl = {
     cardNumber: "Numer karty",
     expirationDate: "Data ważności",
     cvv: "CVV",
-    pay: "Zapłać"
+    pay: "Zapłać",
+    fetchError: "Nie udało się załadować zamówienia",
+    paymentError: "Błąd podczas dokonywania płatności",
+    reservationNotFound: "Nie znaleziono rezerwacji"
   },
 
-  // Add or update admin translation placeholders
+  // Admin
   admin: {
-    panelTitle: "Panel Administratora", // NEW KEY
-    statistics: "Statystyki", // NEW KEY
-    movies: "Zarządzaj Filmami", // NEW KEY
-    showtimes: "Zarządzaj Seansami", // NEW KEY
-    halls: "Zarządzaj Salami", // NEW KEY
+    panelTitle: "Panel Administratora",
+    statistics: "Statystyki",
+    movies: "Zarządzaj Filmami",
+    showtimes: "Zarządzaj Seansami",
+    halls: "Zarządzaj Salami",
     addMovie: "Dodaj Film",
     editMovie: "Edytuj Film",
     movieTitle: "Tytuł Filmu",
@@ -375,15 +402,22 @@ const pl = {
     releaseDate: "Data Premiery",
     posterUrl: "URL Plakatu",
     rating: "Ocena",
-    genres: "Gatunki",
+    // Only keep one genres key (object format)
+    genres: {
+      all: "Wszystkie Gatunki",
+      action: "Akcja",
+      comedy: "Komedia",
+      drama: "Dramat",
+      horror: "Horror",
+      'sci-fi': "Sci-Fi",
+      animation: "Animacja"
+    },
     save: "Zapisz",
     cancel: "Anuluj",
     delete: "Usuń",
     edit: "Edytuj",
     confirmDeleteMovie: "Czy na pewno chcesz usunąć ten film?",
     noMoviesFound: "Nie znaleziono filmów",
-    
-    // Showtimes management
     addShowtime: "Dodaj Seans",
     editShowtime: "Edytuj Seans",
     movie: "Film",
@@ -394,8 +428,6 @@ const pl = {
     selectHall: "Wybierz Salę",
     confirmDeleteShowtime: "Czy na pewno chcesz usunąć ten seans?",
     noShowtimesFound: "Nie znaleziono seansów",
-    
-    // Halls management
     addHall: "Dodaj Salę",
     editHall: "Edytuj Salę",
     hallName: "Nazwa Sali",
@@ -406,8 +438,6 @@ const pl = {
     confirmDeleteHall: "Czy na pewno chcesz usunąć tę salę?",
     cannotDeleteHall: "Nie można usunąć sali z przypisanymi seansami",
     noHallsFound: "Nie znaleziono sal",
-    
-    // Statistics
     totalTickets: "Sprzedane Bilety",
     revenue: "Całkowity Przychód",
     upcomingShowtimes: "Nadchodzące Seanse",

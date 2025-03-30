@@ -189,6 +189,16 @@ html, body, #root {
   background: #e53e3e;
 }
 
+/* Hide scrollbar while maintaining functionality */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
 /* Dark mode color adjustments */
 .dark .movie-card {
   @apply bg-dark-bg-secondary border border-gray-800;
@@ -406,4 +416,98 @@ html, body, #root {
 
 .movie-poster-hover:hover img {
   transform: scale(1.05);
+}
+
+/* Specific animations for the movie details page */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.movie-details h1,
+.movie-details .movie-info,
+.movie-details .showtimes-container {
+  animation: fadeUp 0.6s ease-out forwards;
+}
+
+.movie-details h1 {
+  animation-delay: 0.1s;
+}
+
+.movie-details .movie-info {
+  animation-delay: 0.3s;
+}
+
+.movie-details .showtimes-container {
+  animation-delay: 0.5s;
+}
+
+/* Dark mode optimizations */
+.dark {
+  color-scheme: dark;
+}
+
+/* Dark mode improvements for MovieDetails page */
+.dark .movie-details h1 {
+  color: #fff;
+}
+
+.dark .movie-details .bg-white {
+  background-color: #1f2937; /* dark gray */
+}
+
+.dark .movie-details .text-cinema-black {
+  color: #e5e7eb; /* light gray for better readability */
+}
+
+.dark .movie-details .bg-gray-50 {
+  background-color: #374151; /* darker gray for card backgrounds */
+}
+
+/* Fix: Use custom dark mode text classes instead of targeting utility classes directly */
+.dark .movie-details .dark-text-secondary {
+  color: #9ca3af; /* medium gray for secondary text */
+}
+
+.dark .movie-details [class*="text-gray-"] {
+  /* Style all gray text elements in dark mode with better contrast */
+  color: #d1d5db;
+}
+
+/* Enhanced dark mode shadows */
+.dark .shadow-xl, 
+.dark .shadow-lg, 
+.dark .shadow-md {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 
+              0 4px 6px -2px rgba(0, 0, 0, 0.45);
+}
+
+/* Dark mode specific styles for date selectors */
+.dark .date-selector-active {
+  background-color: #991b1b; /* darker red for dark mode */
+  color: #fff;
+}
+
+.dark .date-selector-inactive {
+  background-color: #4b5563; /* darker gray for dark mode */
+  color: #d1d5db;
+}
+
+/* Dark mode border adjustments */
+.dark .border-gray-100,
+.dark .border-gray-200 {
+  border-color: #374151;
+}
+
+/* Dark mode gradient modification */
+.dark .bg-gradient-overlay {
+  background-image: linear-gradient(to bottom, 
+                    rgba(0,0,0,0.7), 
+                    rgba(17, 24, 39, 0.95)); /* darker gradient for dark mode */
 }

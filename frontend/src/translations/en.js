@@ -285,7 +285,30 @@ const en = {
       title: 'Error',
       tryAgain: 'Try Again'
     },
-    signedInAs: 'Signed in as:'
+    signedInAs: 'Signed in as:',
+    days: {
+      mon: "Mon",
+      tue: "Tue",
+      wed: "Wed",
+      thu: "Thu",
+      fri: "Fri",
+      sat: "Sat",
+      sun: "Sun"
+    },
+    months: {
+      jan: "January",
+      feb: "February",
+      mar: "March",
+      apr: "April",
+      may: "May",
+      jun: "June",
+      jul: "July",
+      aug: "August",
+      sep: "September",
+      oct: "October",
+      nov: "November",
+      dec: "December"
+    }
   },
 
   // Language switcher
@@ -317,7 +340,9 @@ const en = {
   movie: {
     description: "Description", // NEW KEY
     showtimes: "Showtimes",
-    selectSeats: "Select Seats"
+    selectSeats: "Select Seats",
+    availableShowtimes: "Available Showtimes", // NEW KEY
+    noShowtimes: "No showtimes currently available" // NEW KEY
   },
   profile: {
     myProfile: "My Profile",
