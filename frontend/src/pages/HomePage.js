@@ -111,7 +111,7 @@ const HomePage = () => {
               <SwiperSlide key={movie.id} className="relative">
                 <div 
                   className="absolute inset-0 bg-cover bg-center z-0" 
-                  style={{ backgroundImage: `url(${movie.poster_url || 'https://source.unsplash.com/random/1200x600/?cinema'})` }}
+                  style={{ backgroundImage: `url(${movie.poster_url || 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1625&q=80'})` }}
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-50 z-10" />
                 <div className="absolute bottom-0 left-0 right-0 p-10 text-white z-20">
@@ -163,12 +163,12 @@ const HomePage = () => {
             <div className="md:w-1/2 mb-10 md:mb-0">
               <div className="relative">
                 <img 
-                  src="https://source.unsplash.com/random/600x400/?cinema,theater" 
+                  src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
                   alt="Inside our cinema" 
                   className="rounded-lg shadow-xl"
                 />
                 <img 
-                  src="https://source.unsplash.com/random/300x200/?popcorn,movies" 
+                  src="https://images.unsplash.com/photo-1586899028174-e7098604235b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" 
                   alt="Cinema experience" 
                   className="absolute -bottom-10 -right-10 rounded-lg shadow-xl border-4 border-white hidden md:block w-64"
                 />
@@ -233,7 +233,7 @@ const HomePage = () => {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = 'https://via.placeholder.com/300x450?text=No+Image';
+                        e.target.src = 'https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80';
                       }}
                     />
                   </div>

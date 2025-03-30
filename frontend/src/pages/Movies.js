@@ -127,7 +127,7 @@ const Movies = () => {
       <div className="bg-gradient-to-r from-cinema-black to-cinema-red-dark text-white py-16 px-4 mb-10 rounded-b-2xl relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img 
-            src="https://source.unsplash.com/random/1920x1080/?cinema,movie" 
+            src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
             alt="Movies background" 
             className="w-full h-full object-cover"
           />
@@ -218,7 +218,7 @@ const Movies = () => {
           </p>
         </div>
         
-        {/* Movies Grid - FIXED VERSION */}
+        {/* Movies Grid */}
         {filteredMovies.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {filteredMovies.map((movie, index) => (
@@ -236,7 +236,8 @@ const Movies = () => {
                       className="w-full h-full object-cover"
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = 'https://via.placeholder.com/300x450?text=No+Image';
+                        // Use a specific movie poster placeholder
+                        e.target.src = 'https://images.unsplash.com/photo-1594909122845-11baa439b7bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80';
                       }}
                     />
                     {movie.now_showing && (
