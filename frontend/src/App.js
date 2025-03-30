@@ -26,7 +26,8 @@ const App = () => {
           <AuthProvider>
             <div className="min-h-screen bg-gray-100 dark:bg-dark-bg-primary text-gray-900 dark:text-dark-text-primary transition-colors duration-300 flex flex-col">
               <Navbar />
-              <div className="container mx-auto px-4 py-8 flex-grow">
+              {/* Remove the container width constraint and padding */}
+              <div className="flex-grow">
                 <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/movies" element={<Movies />} />

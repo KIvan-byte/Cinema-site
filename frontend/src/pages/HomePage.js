@@ -95,9 +95,9 @@ const HomePage = () => {
   }
 
   return (
-    <div className="homepage pb-12">
-      {/* Hero Section with Movie Carousel */}
-      <section className="relative mb-16">
+    <div className="homepage">
+      {/* Hero Section with Full-Width Slider */}
+      <section className="relative w-full">
         {featuredMovies.length > 0 ? (
           <Swiper
             modules={[Autoplay, Pagination, Navigation, EffectFade]}
@@ -107,19 +107,19 @@ const HomePage = () => {
             autoplay={{ delay: 5000, disableOnInteraction: false }}
             pagination={{ clickable: true }}
             navigation
-            className="w-full h-[600px] rounded-xl overflow-hidden"
+            className="w-full h-[70vh] min-h-[600px]"
           >
             {featuredMovies.map((movie) => (
               <SwiperSlide key={movie.id} className="relative">
                 <div 
-                  className="absolute inset-0 bg-cover bg-center z-0" 
+                  className="absolute inset-0 bg-cover bg-center z-0 animate-slow-zoom"
                   style={{ backgroundImage: `url(${movie.poster_url || 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1625&q=80'})` }}
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-50 z-10" />
-                <div className="absolute bottom-0 left-0 right-0 p-10 text-white z-20">
-                  <h2 className="text-4xl md:text-5xl font-bold mb-2">{movie.title}</h2>
-                  <p className="text-xl mb-6">{movie.description}</p>
-                  <div className="flex items-center mb-6">
+                <div className="absolute inset-0 bg-black bg-opacity-60 z-10" />
+                <div className="container mx-auto absolute bottom-0 left-0 right-0 p-10 md:p-20 text-white z-20">
+                  <h2 className="text-4xl md:text-7xl font-bold mb-4">{movie.title}</h2>
+                  <p className="text-xl mb-8 max-w-3xl">{movie.description}</p>
+                  <div className="flex items-center mb-8">
                     {Array(5).fill().map((_, i) => (
                       <svg 
                         key={i} 
@@ -134,24 +134,30 @@ const HomePage = () => {
                   </div>
                   <Link 
                     to={`/movie/${movie.id}`} 
-                    className="bg-cinema-red hover:bg-cinema-red-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+                    className="bg-cinema-red hover:bg-cinema-red-dark text-white font-bold py-4 px-8 rounded-lg transition duration-300 inline-flex items-center"
                   >
                     {t("home.hero.browseBtn")}
+                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
                   </Link>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
         ) : (
-          <div className="w-full h-[400px] bg-gradient-to-r from-cinema-red to-cinema-red-dark flex items-center justify-center rounded-xl">
+          <div className="w-full h-[70vh] min-h-[600px] bg-gradient-to-r from-cinema-red to-cinema-red-dark flex items-center justify-center">
             <div className="text-center text-white p-8">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">{t("home.hero.welcome")}</h1>
-              <p className="text-xl md:text-2xl mb-8">{t("home.hero.subtitle")}</p>
+              <h1 className="text-5xl md:text-7xl font-bold mb-6">{t("home.hero.welcome")}</h1>
+              <p className="text-xl md:text-3xl mb-10">{t("home.hero.subtitle")}</p>
               <Link 
                 to="/movies" 
-                className="bg-white text-cinema-red hover:bg-gray-100 font-bold py-3 px-6 rounded-lg transition duration-300"
+                className="bg-white text-cinema-red hover:bg-gray-100 font-bold py-4 px-8 rounded-lg transition duration-300 inline-flex items-center"
               >
                 {t("home.hero.browseBtn")}
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                </svg>
               </Link>
             </div>
           </div>
@@ -159,8 +165,8 @@ const HomePage = () => {
       </section>
 
       {/* About Cinema Section */}
-      <section className="py-16 bg-white dark:bg-dark-bg-secondary rounded-xl shadow-md mb-16 transition-colors duration-300">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-white dark:bg-dark-bg-secondary transition-colors duration-300">
+        <div className="container mx-auto px-6 md:px-8">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0">
               <div className="relative">
@@ -204,8 +210,8 @@ const HomePage = () => {
       </section>
 
       {/* Now Showing Movies */}
-      <section className="mb-16">
-        <div className="container mx-auto px-4">
+      <section className="py-20">
+        <div className="container mx-auto px-6 md:px-8">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold text-cinema-black dark:text-white">{t("home.nowShowing.title")}</h2>
             <Link 
@@ -276,38 +282,45 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Cinema Features/Amenities */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md mb-16 transition-colors duration-300">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-cinema-black dark:text-white">{t("home.features.title")}</h2>
+      {/* Cinema Features/Amenities - Full Bleed with Background */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+        <div className="container mx-auto px-6 md:px-8">
+          <h2 className="text-4xl font-bold text-center mb-16 text-cinema-black dark:text-white">{t("home.features.title")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="bg-white dark:bg-dark-bg-secondary p-8 rounded-xl shadow-md text-center transform transition duration-300 hover:-translate-y-2 hover:shadow-lg">
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold mb-2 text-cinema-black dark:text-white">{feature.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
+              <div 
+                key={index} 
+                className="bg-white dark:bg-dark-bg-secondary p-8 rounded-xl shadow-xl transform transition-all duration-300 hover:-translate-y-4 hover:shadow-2xl"
+              >
+                <div className="text-6xl mb-6 text-cinema-red">{feature.icon}</div>
+                <h3 className="text-2xl font-bold mb-4 text-cinema-black dark:text-white">{feature.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-lg">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Newsletter */}
-      <section className="py-16 bg-cinema-red rounded-xl text-white shadow-md">
-        <div className="container mx-auto px-4">
+      {/* Newsletter - Full Width with Enhanced Design */}
+      <section className="py-20 bg-cinema-red relative overflow-hidden">
+        {/* Add decorative elements */}
+        <div className="absolute -top-24 -left-24 w-64 h-64 rounded-full bg-cinema-red-dark opacity-30"></div>
+        <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-cinema-red-dark opacity-30"></div>
+        
+        <div className="container mx-auto px-6 md:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">{t("home.newsletter.title")}</h2>
-            <p className="text-lg mb-8">{t("home.newsletter.description")}</p>
-            <form className="flex flex-col sm:flex-row gap-4">
+            <h2 className="text-4xl font-bold mb-6 text-white">{t("home.newsletter.title")}</h2>
+            <p className="text-xl mb-10 text-white opacity-90">{t("home.newsletter.description")}</p>
+            <form className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
               <input 
                 type="email" 
                 placeholder={t("home.newsletter.placeholder")} 
-                className="flex-grow py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-gray-800"
+                className="flex-grow py-4 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-gray-800 text-lg"
                 required
               />
               <button 
                 type="submit" 
-                className="bg-white text-cinema-red hover:bg-gray-100 py-3 px-6 rounded-lg font-bold transition duration-300"
+                className="bg-white text-cinema-red hover:bg-gray-100 py-4 px-8 rounded-lg font-bold transition duration-300 text-lg"
               >
                 {t("home.newsletter.subscribeBtn")}
               </button>

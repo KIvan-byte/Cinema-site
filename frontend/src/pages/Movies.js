@@ -124,27 +124,42 @@ const Movies = () => {
   }
 
   return (
-    <div className="movies-page pb-12">
-      {/* Hero Banner with dark mode support */}
-      <div className="bg-gradient-to-r from-cinema-black to-cinema-red-dark dark:from-gray-900 dark:to-cinema-red-dark text-white py-16 px-4 mb-10 rounded-b-2xl relative overflow-hidden transition-colors duration-300">
-        <div className="absolute inset-0 opacity-20">
+    <div className="movies-page">
+      {/* Hero Banner - Full Width */}
+      <div className="bg-gradient-to-r from-cinema-black to-cinema-red-dark dark:from-gray-900 dark:to-cinema-red-dark text-white py-20 px-6 md:px-8 mb-10 relative overflow-hidden transition-colors duration-300">
+        {/* Add decorative film strip */}
+        <div className="absolute top-0 left-0 w-full h-10 bg-black bg-opacity-30 flex space-x-4 px-4">
+          {[...Array(20)].map((_, i) => (
+            <div key={i} className="h-full w-6 bg-white bg-opacity-10"></div>
+          ))}
+        </div>
+        
+        <div className="absolute inset-0 opacity-10">
           <img 
             src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
             alt={t("movies.hero.alt") || "Movies background"} 
             className="w-full h-full object-cover"
           />
         </div>
+        
         <div className="container mx-auto relative z-10">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t("movies.hero.title")}</h1>
-          <p className="text-xl max-w-3xl">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">{t("movies.hero.title")}</h1>
+          <p className="text-xl md:text-2xl max-w-3xl">
             {t("movies.hero.description")}
           </p>
         </div>
+        
+        {/* Add decorative film strip */}
+        <div className="absolute bottom-0 left-0 w-full h-10 bg-black bg-opacity-30 flex space-x-4 px-4">
+          {[...Array(20)].map((_, i) => (
+            <div key={i} className="h-full w-6 bg-white bg-opacity-10"></div>
+          ))}
+        </div>
       </div>
       
-      <div className="container mx-auto px-4">
-        {/* Search and Filters Section with dark mode */}
-        <div className="bg-white dark:bg-dark-bg-secondary p-6 rounded-xl shadow-md dark:shadow-gray-900 mb-8 transition-colors duration-300">
+      <div className="container mx-auto px-6 md:px-8 mb-16">
+        {/* Search and Filters Section with enhanced styling */}
+        <div className="bg-white dark:bg-dark-bg-secondary p-8 rounded-2xl shadow-xl dark:shadow-gray-900 mb-10 transition-colors duration-300">
           <div className="flex flex-col md:flex-row gap-4 mb-6">
             {/* Search Input */}
             <div className="md:flex-1">
@@ -212,16 +227,16 @@ const Movies = () => {
           </div>
         </div>
         
-        {/* Results Count with dark mode */}
-        <div className="mb-6">
-          <p className="text-gray-600 dark:text-gray-400">
+        {/* Results Count */}
+        <div className="mb-8">
+          <p className="text-lg text-gray-600 dark:text-gray-400">
             {filteredMovies.length} {filteredMovies.length === 1 ? t("movies.result.single") : t("movies.result.multiple")}
           </p>
         </div>
         
-        {/* Movies Grid with dark mode */}
+        {/* Movies Grid with enhanced animations and hover effects */}
         {filteredMovies.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8">
             {filteredMovies.map((movie, index) => (
               <Link 
                 to={`/movie/${movie.id}`} 
@@ -229,7 +244,7 @@ const Movies = () => {
                 className="block group movie-card" 
                 style={{ '--animation-order': index }}
               >
-                <div className="bg-white dark:bg-dark-bg-secondary rounded-xl overflow-hidden shadow-lg dark:shadow-gray-900 transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 h-full flex flex-col">
+                <div className="bg-white dark:bg-dark-bg-secondary rounded-2xl overflow-hidden shadow-xl dark:shadow-gray-900 transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-2 h-full flex flex-col">
                   <div className="relative h-96 sm:h-80 overflow-hidden movie-poster-hover">
                     <img 
                       src={movie.poster_url} 
@@ -287,7 +302,7 @@ const Movies = () => {
             ))}
           </div>
         ) : (
-          <div className="bg-white dark:bg-dark-bg-secondary p-12 text-center rounded-xl shadow dark:shadow-gray-900">
+          <div className="bg-white dark:bg-dark-bg-secondary p-16 text-center rounded-2xl shadow-xl dark:shadow-gray-900">
             <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>

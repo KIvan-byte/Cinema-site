@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Statistics = () => {
-  const [statistics, setStatistics] = useState(null);
+  const { t } = useLanguage();
+  const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -10,10 +12,11 @@ const Statistics = () => {
     const fetchStatistics = async () => {
       try {
         const response = await api.get('/admin/statistics');
-        setStatistics(response.data);
+        setStats(response.data);
         setLoading(false);
       } catch (err) {
-        setError('Failed to load statistics data');
+        console.error('Error fetching statistics:', err);
+        setError('Failed to load statistics');
         setLoading(false);
       }
     };
@@ -23,7 +26,7 @@ const Statistics = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center py-20">
+      <div className="flex justify-center items-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cinema-red"></div>
       </div>
     );
@@ -31,61 +34,104 @@ const Statistics = () => {
 
   if (error) {
     return (
-      <div className="text-center py-10 text-cinema-red-dark">{error}</div>
+      <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+        <strong className="font-bold">Error!</strong>
+        <span className="block sm:inline"> {error}</span>
+      </div>
     );
   }
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6 text-cinema-black">Sales Statistics</h1>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-white rounded-xl shadow-lg p-6">
-          <div className="text-cinema-gray text-sm mb-1">Total Revenue</div>
-          <div className="text-2xl font-bold text-cinema-red-dark">${statistics.total_sales.toFixed(2)}</div>
-        </div>
-        
-        <div className="bg-white rounded-xl shadow-lg p-6">
-          <div className="text-cinema-gray text-sm mb-1">Tickets Sold</div>
-          <div className="text-2xl font-bold text-cinema-black">{statistics.tickets_sold}</div>
-        </div>
-        
-        <div className="bg-white rounded-xl shadow-lg p-6">
-          <div className="text-cinema-gray text-sm mb-1">Average Ticket Price</div>
-          <div className="text-2xl font-bold text-cinema-orange">
-            ${statistics.tickets_sold > 0 
-              ? (statistics.total_sales / statistics.tickets_sold).toFixed(2) 
-              : '0.00'}
-          </div>
-        </div>
+      <h1 className="text-2xl font-bold mb-6 text-cinema-black">
+        {t("admin.statistics")}
+      </h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <StatCard 
+          title={t("admin.totalTickets")} 
+          value={stats?.totalTickets || 0} 
+          color="bg-blue-500" 
+        />
+        <StatCard 
+          title={t("admin.revenue")} 
+          value={`$${stats?.totalRevenue?.toFixed(2) || "0.00"}`} 
+          color="bg-green-500" 
+        />
+        <StatCard 
+          title={t("admin.upcomingShowtimes")} 
+          value={stats?.upcomingShowtimes || 0} 
+          color="bg-yellow-500" 
+        />
+        <StatCard 
+          title={t("admin.totalMovies")} 
+          value={stats?.totalMovies || 0} 
+          color="bg-purple-500" 
+        />
       </div>
 
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-        <div className="bg-gradient-to-r from-cinema-red to-cinema-red-dark text-white p-5">
-          <h2 className="font-semibold text-lg">Popular Movies</h2>
-        </div>
-        <div className="p-5">
-          {statistics.popular_movies && statistics.popular_movies.length > 0 ? (
-            <div className="divide-y divide-cinema-gray-light">
-              {statistics.popular_movies.map((movie, index) => (
-                <div key={movie.id} className="py-3 flex justify-between items-center">
-                  <div className="flex items-center">
-                    <span className="text-cinema-gray mr-4">#{index + 1}</span>
-                    <span className="font-medium text-cinema-black">{movie.title}</span>
-                  </div>
-                  <span className="bg-cinema-red-light text-cinema-red-dark text-xs font-medium px-3 py-1 rounded-full">
-                    {movie.reservations} {movie.reservations === 1 ? 'ticket' : 'tickets'}
-                  </span>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-xl font-semibold mb-4 text-cinema-black">
+            {t("admin.popularMovies")}
+          </h2>
+          <div className="space-y-4">
+            {stats?.popularMovies?.slice(0, 5).map((movie, index) => (
+              <div key={index} className="flex justify-between items-center border-b pb-2">
+                <div>
+                  <p className="font-medium text-cinema-black">{movie.title}</p>
+                  <p className="text-sm text-gray-500">
+                    {movie.tickets_sold} {t("admin.ticketsSold")}
+                  </p>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <p className="text-cinema-gray">No movie sales data available</p>
-          )}
+                <div className="font-semibold text-cinema-red-dark">
+                  ${movie.revenue?.toFixed(2) || "0.00"}
+                </div>
+              </div>
+            ))}
+            {(!stats?.popularMovies || stats.popularMovies.length === 0) && (
+              <p className="text-gray-500">{t("admin.noDataAvailable")}</p>
+            )}
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-xl font-semibold mb-4 text-cinema-black">
+            {t("admin.recentTransactions")}
+          </h2>
+          <div className="space-y-4">
+            {stats?.recentTransactions?.slice(0, 5).map((transaction, index) => (
+              <div key={index} className="flex justify-between items-center border-b pb-2">
+                <div>
+                  <p className="font-medium text-cinema-black">{transaction.user_name}</p>
+                  <p className="text-sm text-gray-500">{transaction.movie_title}</p>
+                  <p className="text-xs text-gray-400">
+                    {new Date(transaction.date).toLocaleString()}
+                  </p>
+                </div>
+                <div className="font-semibold text-cinema-red-dark">
+                  ${transaction.amount?.toFixed(2) || "0.00"}
+                </div>
+              </div>
+            ))}
+            {(!stats?.recentTransactions || stats.recentTransactions.length === 0) && (
+              <p className="text-gray-500">{t("admin.noDataAvailable")}</p>
+            )}
+          </div>
         </div>
       </div>
     </div>
   );
 };
+
+const StatCard = ({ title, value, color }) => (
+  <div className="bg-white rounded-lg shadow-md overflow-hidden">
+    <div className={`${color} h-2`}></div>
+    <div className="p-4">
+      <h3 className="text-gray-500 text-sm font-medium">{title}</h3>
+      <p className="mt-1 text-3xl font-semibold text-cinema-black">{value}</p>
+    </div>
+  </div>
+);
 
 export default Statistics;

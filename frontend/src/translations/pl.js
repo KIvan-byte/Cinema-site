@@ -360,7 +360,56 @@ const pl = {
     statistics: "Statystyki", // NEW KEY
     movies: "Zarządzaj Filmami", // NEW KEY
     showtimes: "Zarządzaj Seansami", // NEW KEY
-    halls: "Zarządzaj Salami" // NEW KEY
+    halls: "Zarządzaj Salami", // NEW KEY
+    addMovie: "Dodaj Film",
+    editMovie: "Edytuj Film",
+    movieTitle: "Tytuł Filmu",
+    description: "Opis",
+    duration: "Czas Trwania",
+    releaseDate: "Data Premiery",
+    posterUrl: "URL Plakatu",
+    rating: "Ocena",
+    genres: "Gatunki",
+    save: "Zapisz",
+    cancel: "Anuluj",
+    delete: "Usuń",
+    edit: "Edytuj",
+    confirmDeleteMovie: "Czy na pewno chcesz usunąć ten film?",
+    noMoviesFound: "Nie znaleziono filmów",
+    
+    // Showtimes management
+    addShowtime: "Dodaj Seans",
+    editShowtime: "Edytuj Seans",
+    movie: "Film",
+    hall: "Sala",
+    startTime: "Czas Rozpoczęcia",
+    price: "Cena",
+    selectMovie: "Wybierz Film",
+    selectHall: "Wybierz Salę",
+    confirmDeleteShowtime: "Czy na pewno chcesz usunąć ten seans?",
+    noShowtimesFound: "Nie znaleziono seansów",
+    
+    // Halls management
+    addHall: "Dodaj Salę",
+    editHall: "Edytuj Salę",
+    hallName: "Nazwa Sali",
+    capacity: "Pojemność",
+    rows: "Rzędy",
+    seatsPerRow: "Miejsca w Rzędzie",
+    capacityCalculated: "Pojemność jest automatycznie obliczana na podstawie rzędów i miejsc w rzędzie",
+    confirmDeleteHall: "Czy na pewno chcesz usunąć tę salę?",
+    cannotDeleteHall: "Nie można usunąć sali z przypisanymi seansami",
+    noHallsFound: "Nie znaleziono sal",
+    
+    // Statistics
+    totalTickets: "Sprzedane Bilety",
+    revenue: "Całkowity Przychód",
+    upcomingShowtimes: "Nadchodzące Seanse",
+    totalMovies: "Liczba Filmów",
+    popularMovies: "Popularne Filmy",
+    ticketsSold: "sprzedanych biletów",
+    recentTransactions: "Ostatnie Transakcje",
+    noDataAvailable: "Brak dostępnych danych"
   }
 };
 

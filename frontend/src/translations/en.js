@@ -343,7 +343,57 @@ const en = {
     statistics: "Statistics", // NEW KEY
     movies: "Manage Movies", // NEW KEY
     showtimes: "Manage Showtimes", // NEW KEY
-    halls: "Manage Halls" // NEW KEY
+    halls: "Manage Halls", // NEW KEY
+    // New keys for admin functionality
+    addMovie: "Add Movie",
+    editMovie: "Edit Movie",
+    movieTitle: "Movie Title",
+    description: "Description",
+    duration: "Duration",
+    releaseDate: "Release Date",
+    posterUrl: "Poster URL",
+    rating: "Rating",
+    genres: "Genres",
+    save: "Save",
+    cancel: "Cancel",
+    delete: "Delete",
+    edit: "Edit",
+    confirmDeleteMovie: "Are you sure you want to delete this movie?",
+    noMoviesFound: "No movies found",
+    
+    // Showtimes management
+    addShowtime: "Add Showtime",
+    editShowtime: "Edit Showtime",
+    movie: "Movie",
+    hall: "Hall",
+    startTime: "Start Time",
+    price: "Price",
+    selectMovie: "Select Movie",
+    selectHall: "Select Hall",
+    confirmDeleteShowtime: "Are you sure you want to delete this showtime?",
+    noShowtimesFound: "No showtimes found",
+    
+    // Halls management
+    addHall: "Add Hall",
+    editHall: "Edit Hall",
+    hallName: "Hall Name",
+    capacity: "Capacity",
+    rows: "Rows",
+    seatsPerRow: "Seats per Row",
+    capacityCalculated: "Capacity is automatically calculated based on rows and seats per row",
+    confirmDeleteHall: "Are you sure you want to delete this hall?",
+    cannotDeleteHall: "Cannot delete hall with associated showtimes",
+    noHallsFound: "No halls found",
+    
+    // Statistics
+    totalTickets: "Total Tickets Sold",
+    revenue: "Total Revenue",
+    upcomingShowtimes: "Upcoming Showtimes",
+    totalMovies: "Total Movies",
+    popularMovies: "Popular Movies",
+    ticketsSold: "tickets sold",
+    recentTransactions: "Recent Transactions",
+    noDataAvailable: "No data available"
   }
 };
 
