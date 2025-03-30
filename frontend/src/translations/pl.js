@@ -75,6 +75,10 @@ const pl = {
       button: 'Subskrybuj',
       subscribeBtn: "Subskrybuj teraz", // NEW KEY
       description: "Nie przegap najnowszych aktualizacji i specjalnych ofert. Zapisz się do naszego newslettera już dziś." // NEW KEY
+    },
+    error: {
+      tryAgainBtn: 'Spróbuj ponownie', // NEW KEY
+      titleCollection: 'Nie można załadować kolekcji' // NEW KEY
     }
   },
   
@@ -118,7 +122,8 @@ const pl = {
       horror: "Horror", // NEW KEY
       "sci-fi": "Sci-Fi", // NEW KEY
       animation: "Animacja" // NEW KEY
-    }
+    },
+    exploreCollection: 'Przeglądaj Kolekcję' // NEW KEY
   },
   
   // About Page

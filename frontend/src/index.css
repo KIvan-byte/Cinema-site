@@ -198,7 +198,6 @@ html, body, #root {
   @apply brightness-110;
 }
 
-/* Dark mode scrollbar */
 .dark ::-webkit-scrollbar-track {
   @apply bg-gray-800;
 }
@@ -270,4 +269,69 @@ html, body, #root {
 
 .dark .shadow-xl, .dark .shadow-lg, .dark .shadow-md {
   @apply shadow-gray-900;
+}
+
+/* New animations for hero section */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.hero-animate-in > * {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.hero-animate-in > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-animate-in > *:nth-child(2) { animation-delay: 0.3s; }
+.hero-animate-in > *:nth-child(3) { animation-delay: 0.5s; }
+.hero-animate-in > *:nth-child(4) { animation-delay: 0.7s; }
+
+.hero-icon-pulse {
+  animation: pulse 3s infinite ease-in-out;
+}
+
+.hero-cta-float {
+  animation: float 2s infinite ease-in-out;
+}
+
+/* Film reel animation */
+@keyframes filmReel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.film-reel-animate {
+  animation: filmReel 15s linear infinite;
+  width: 200%;
 }

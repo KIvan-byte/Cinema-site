@@ -75,6 +75,10 @@ const en = {
       button: 'Subscribe',
       subscribeBtn: "Subscribe Now", // NEW KEY
       description: "Don’t miss out on the latest updates and special offers. Subscribe to our newsletter today." // NEW KEY
+    },
+    error: {
+      tryAgainBtn: 'Try Again', // NEW KEY
+      titleCollection: 'Unable to Load Collection' // NEW KEY
     }
   },
   
@@ -119,7 +123,8 @@ const en = {
       horror: "Horror", // NEW KEY
       "sci-fi": "Sci-Fi", // NEW KEY
       animation: "Animation" // NEW KEY
-    }
+    },
+    exploreCollection: 'Explore Collection' // NEW KEY
   },
   
   // About Page

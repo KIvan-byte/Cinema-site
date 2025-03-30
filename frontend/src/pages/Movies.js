@@ -125,39 +125,79 @@ const Movies = () => {
 
   return (
     <div className="movies-page">
-      {/* Hero Banner - Full Width */}
-      <div className="bg-gradient-to-r from-cinema-black to-cinema-red-dark dark:from-gray-900 dark:to-cinema-red-dark text-white py-20 px-6 md:px-8 mb-10 relative overflow-hidden transition-colors duration-300">
-        {/* Add decorative film strip */}
+      {/* Enhanced Hero Banner - Full Width with cinema-inspired design */}
+      <div className="bg-cinema-black text-white relative overflow-hidden">
+        {/* Film reel top decoration */}
         <div className="absolute top-0 left-0 w-full h-10 bg-black bg-opacity-30 flex space-x-4 px-4">
           {[...Array(20)].map((_, i) => (
             <div key={i} className="h-full w-6 bg-white bg-opacity-10"></div>
           ))}
         </div>
         
-        <div className="absolute inset-0 opacity-10">
+        {/* Background with parallax effect */}
+        <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-            alt={t("movies.hero.alt") || "Movies background"} 
-            className="w-full h-full object-cover"
+            src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
+            alt="Cinema background" 
+            className="w-full h-full object-cover transform scale-110 origin-center"
+            style={{ opacity: 0.15 }}
           />
+          <div className="absolute inset-0 bg-gradient-to-r from-cinema-black via-cinema-black/90 to-cinema-red-dark/90"></div>
+        </div>
+      
+        <div className="container mx-auto px-4 py-20 md:py-32 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            {/* Decorative film icon */}
+            <div className="inline-flex mb-6 p-3 bg-cinema-red-dark/30 backdrop-blur-sm rounded-full">
+              <svg className="w-8 h-8 text-cinema-red-light" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm3 2h6v4H7V5zm8 8v2h1v-2h-1zm-2-2H7v4h6v-4zm2 0h1V9h-1v2zm1-4V5h-1v2h1zM5 5v2H4V5h1zm0 4H4v2h1V9zm-1 4h1v2H4v-2z" clipRule="evenodd" />
+              </svg>
+            </div>
+            
+            {/* Main heading with enhanced typography */}
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-4 tracking-tight">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-cinema-red-light">
+                {t("movies.hero.title")}
+              </span>
+            </h1>
+            
+            {/* Stylized subtitle */}
+            <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-2xl mx-auto leading-relaxed">
+              {t("movies.hero.description")}
+            </p>
+            
+            {/* Call-to-action button */}
+            <div className="mt-8">
+              <a 
+                href="#movies-grid" 
+                className="inline-flex items-center px-6 py-3 rounded-lg bg-cinema-red hover:bg-cinema-red-dark transition-all shadow-lg hover:shadow-cinema-red/30 text-white font-semibold text-lg"
+              >
+                {t("movies.exploreCollection") || "Przeglądaj kolekcję"}
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
         
-        <div className="container mx-auto relative z-10">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">{t("movies.hero.title")}</h1>
-          <p className="text-xl md:text-2xl max-w-3xl">
-            {t("movies.hero.description")}
-          </p>
-        </div>
-        
-        {/* Add decorative film strip */}
+        {/* Film reel bottom decoration */}
         <div className="absolute bottom-0 left-0 w-full h-10 bg-black bg-opacity-30 flex space-x-4 px-4">
           {[...Array(20)].map((_, i) => (
             <div key={i} className="h-full w-6 bg-white bg-opacity-10"></div>
           ))}
         </div>
+        
+        {/* Diagonal split design element */}
+        <div className="absolute bottom-0 left-0 w-full h-24 z-10">
+          <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 100V0L100 100H0Z" fill="white" className="dark:fill-dark-bg-secondary" />
+          </svg>
+        </div>
       </div>
       
-      <div className="container mx-auto px-6 md:px-8 mb-16">
+      {/* Add ID for scroll target */}
+      <div id="movies-grid" className="container mx-auto px-6 md:px-8 mb-16 pt-4">
         {/* Search and Filters Section with enhanced styling */}
         <div className="bg-white dark:bg-dark-bg-secondary p-8 rounded-2xl shadow-xl dark:shadow-gray-900 mb-10 transition-colors duration-300">
           <div className="flex flex-col md:flex-row gap-4 mb-6">
