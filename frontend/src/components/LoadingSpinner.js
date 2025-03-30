@@ -1,6 +1,14 @@
 import React from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 const LoadingSpinner = ({ size = "large", color = "cinema-red" }) => {
+  const { theme } = useTheme();
+  
+  // Automatically adjust color based on theme if not explicitly specified
+  if (color === "cinema-red" && theme === "dark") {
+    color = "white";
+  }
+  
   const sizeClasses = {
     small: "h-8 w-8 border-2",
     medium: "h-12 w-12 border-3",

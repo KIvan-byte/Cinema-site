@@ -10,6 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+  @apply transition-colors duration-300;
 }
 
 code {
@@ -110,4 +111,87 @@ html, body, #root {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #e53e3e;
+}
+
+/* Dark mode color adjustments */
+.dark .movie-card {
+  @apply bg-dark-bg-secondary border border-gray-800;
+}
+
+.dark .movie-poster-hover:hover img {
+  @apply brightness-110;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  @apply bg-gray-800;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-gray-600;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
+
+/* Smooth theme transitions */
+*,
+*::before,
+*::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Additional dark mode styles for all pages */
+.dark {
+  @apply bg-dark-bg-primary text-dark-text-primary;
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  @apply text-white;
+}
+
+.dark .bg-white {
+  @apply bg-dark-bg-secondary;
+}
+
+.dark .text-gray-600 {
+  @apply text-gray-400;
+}
+
+.dark .text-cinema-black {
+  @apply text-white;
+}
+
+/* Input styling for dark mode */
+.dark input, .dark select, .dark textarea {
+  @apply bg-gray-800 border-gray-700 text-white;
+}
+
+/* About page specific styling */
+.dark .about-page .bg-gray-50 {
+  @apply bg-gray-800;
+}
+
+/* Form elements in dark mode */
+.dark input::placeholder {
+  @apply text-gray-500;
+}
+
+.dark input:focus, .dark select:focus, .dark textarea:focus {
+  @apply border-cinema-red ring-cinema-red-dark;
+}
+
+/* Button styles in dark mode */
+.dark .bg-cinema-black {
+  @apply bg-gray-800;
+}
+
+/* Images and cards in dark mode */
+.dark img {
+  @apply brightness-90;
+}
+
+.dark .shadow-xl, .dark .shadow-lg, .dark .shadow-md {
+  @apply shadow-gray-900;
 }

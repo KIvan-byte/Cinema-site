@@ -111,18 +111,18 @@ const About = () => {
       </section>
 
       {/* Our Story Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-dark-bg-secondary transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
-              <h2 className="text-3xl font-bold mb-6 text-cinema-black">Our Story</h2>
-              <p className="text-gray-600 mb-4">
+              <h2 className="text-3xl font-bold mb-6 text-cinema-black dark:text-white">Our Story</h2>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Cinema Tickets began as a small, family-owned movie theater in 1985, driven by a passion for bringing the magic of cinema to our community. What started as a modest two-screen venue has evolved into the premier movie destination you know today.
               </p>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Our commitment to quality has never wavered. From being one of the first theaters in the region to adopt digital projection to our recent renovations featuring luxury recliner seating, we've always stayed ahead of the curve while maintaining the warm, welcoming atmosphere our patrons love.
               </p>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Through decades of change in the film industry, our mission remains constant: to provide an exceptional movie-going experience, showcase a diverse selection of films, and create a space where the community can come together to share in the art of storytelling.
               </p>
             </div>
@@ -144,9 +144,9 @@ const About = () => {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-16 bg-gray-100">
+      <section className="py-16 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-cinema-black">Our Journey</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-cinema-black dark:text-white">Our Journey</h2>
           
           <div className="relative">
             {/* Vertical line */}
@@ -161,18 +161,18 @@ const About = () => {
                   }`}
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-cinema-red border-4 border-white"></div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-cinema-red border-4 border-white dark:border-gray-900"></div>
                   
                   {/* Content */}
                   <div className="md:w-1/2 p-4">
-                    <div className={`bg-white p-6 rounded-lg shadow-md ${
+                    <div className={`bg-white dark:bg-dark-bg-secondary p-6 rounded-lg shadow-md ${
                       index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
                     }`}>
                       <div className="inline-block px-4 py-2 bg-cinema-red-light text-cinema-red-dark rounded-full font-bold mb-4">
                         {milestone.year}
                       </div>
-                      <h3 className="text-xl font-bold mb-2">{milestone.title}</h3>
-                      <p className="text-gray-600">{milestone.description}</p>
+                      <h3 className="text-xl font-bold mb-2 dark:text-white">{milestone.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-300">{milestone.description}</p>
                     </div>
                   </div>
                   
@@ -186,13 +186,13 @@ const About = () => {
       </section>
 
       {/* Our Team Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-dark-bg-secondary transition-colors duration-300">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-cinema-black">Meet Our Team</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-cinema-black dark:text-white">Meet Our Team</h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+              <div key={index} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
                 <div className="h-64 overflow-hidden">
                   <img 
                     src={member.image} 
@@ -201,9 +201,9 @@ const About = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="font-bold text-xl mb-1">{member.name}</h3>
+                  <h3 className="font-bold text-xl mb-1 dark:text-white">{member.name}</h3>
                   <p className="text-cinema-red font-medium mb-3">{member.role}</p>
-                  <p className="text-gray-600 text-sm">{member.bio}</p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{member.bio}</p>
                 </div>
               </div>
             ))}
@@ -212,31 +212,31 @@ const About = () => {
       </section>
 
       {/* Our Facilities */}
-      <section className="py-16 bg-gray-100">
+      <section className="py-16 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-cinema-black">Our Facilities</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-cinema-black dark:text-white">Our Facilities</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="bg-white dark:bg-dark-bg-secondary p-6 rounded-lg shadow-md">
               <div className="text-4xl mb-4 text-cinema-red">🎬</div>
-              <h3 className="text-xl font-bold mb-3">Premium Auditoriums</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold mb-3 dark:text-white">Premium Auditoriums</h3>
+              <p className="text-gray-600 dark:text-gray-300">
                 Our 8 state-of-the-art auditoriums feature 4K laser projection, Dolby Atmos sound, and ultra-comfortable reclining seats with ample legroom.
               </p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="bg-white dark:bg-dark-bg-secondary p-6 rounded-lg shadow-md">
               <div className="text-4xl mb-4 text-cinema-red">🍽️</div>
-              <h3 className="text-xl font-bold mb-3">Gourmet Concessions</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold mb-3 dark:text-white">Gourmet Concessions</h3>
+              <p className="text-gray-600 dark:text-gray-300">
                 Go beyond traditional popcorn with our gourmet food menu, craft beers, specialty cocktails, and premium coffee bar.
               </p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="bg-white dark:bg-dark-bg-secondary p-6 rounded-lg shadow-md">
               <div className="text-4xl mb-4 text-cinema-red">🎮</div>
-              <h3 className="text-xl font-bold mb-3">Entertainment Lounge</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold mb-3 dark:text-white">Entertainment Lounge</h3>
+              <p className="text-gray-600 dark:text-gray-300">
                 Our spacious lobby includes an arcade, comfortable waiting areas, and a bar where you can relax before or after your movie.
               </p>
             </div>
@@ -245,21 +245,21 @@ const About = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-dark-bg-secondary transition-colors duration-300">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-cinema-black">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-cinema-black dark:text-white">Frequently Asked Questions</h2>
           
           <div className="max-w-3xl mx-auto space-y-6">
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6 shadow-sm">
-                <h3 className="font-bold text-lg mb-2 text-cinema-black">{faq.question}</h3>
-                <p className="text-gray-600">{faq.answer}</p>
+              <div key={index} className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 shadow-sm">
+                <h3 className="font-bold text-lg mb-2 text-cinema-black dark:text-white">{faq.question}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{faq.answer}</p>
               </div>
             ))}
           </div>
           
           <div className="text-center mt-10">
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               Have more questions? Feel free to contact our customer service team.
             </p>
             <Link 

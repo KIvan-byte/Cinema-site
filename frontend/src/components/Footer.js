@@ -5,7 +5,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-gray-800 text-white mt-auto">
+    <footer className="bg-gray-800 dark:bg-gray-900 text-white mt-auto transition-colors duration-300">
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Cinema Info */}
@@ -48,7 +48,7 @@ const Footer = () => {
         </div>
         
         {/* Copyright */}
-        <div className="mt-8 pt-4 border-t border-gray-700 text-center">
+        <div className="mt-8 pt-4 border-t border-gray-700 dark:border-gray-800 text-center">
           <p>&copy; {currentYear} Cinema Tickets. All rights reserved.</p>
         </div>
       </div>

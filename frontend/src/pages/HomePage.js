@@ -157,7 +157,7 @@ const HomePage = () => {
       </section>
 
       {/* About Cinema Section */}
-      <section className="py-16 bg-white rounded-xl shadow-md mb-16">
+      <section className="py-16 bg-white dark:bg-dark-bg-secondary rounded-xl shadow-md mb-16 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0">
@@ -175,16 +175,16 @@ const HomePage = () => {
               </div>
             </div>
             <div className="md:w-1/2 md:pl-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-cinema-black">Experience Movies Like Never Before</h2>
-              <p className="text-gray-600 mb-6 text-lg">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-cinema-black dark:text-white">Experience Movies Like Never Before</h2>
+              <p className="text-gray-600 dark:text-gray-300 mb-6 text-lg">
                 Welcome to our state-of-the-art cinema, where movie magic comes alive! Since 2005, we've been dedicated to providing the ultimate movie experience with cutting-edge technology and unparalleled comfort.
               </p>
-              <p className="text-gray-600 mb-8 text-lg">
+              <p className="text-gray-600 dark:text-gray-300 mb-8 text-lg">
                 Our theaters feature crystal-clear projection, immersive Dolby Atmos sound, and luxurious seating that will transform your movie-watching experience. Whether you're a film enthusiast or looking for a perfect date night, our cinema offers the perfect setting.
               </p>
               <Link 
                 to="/about" 
-                className="bg-cinema-black hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300 inline-flex items-center"
+                className="bg-cinema-black dark:bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300 inline-flex items-center"
               >
                 Learn More About Us
                 <svg 
@@ -205,7 +205,7 @@ const HomePage = () => {
       <section className="mb-16">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl font-bold text-cinema-black">Now Showing</h2>
+            <h2 className="text-3xl font-bold text-cinema-black dark:text-white">Now Showing</h2>
             <Link 
               to="/movies" 
               className="text-cinema-red hover:text-cinema-red-dark font-semibold inline-flex items-center"
@@ -225,7 +225,7 @@ const HomePage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {movies.slice(0, 8).map((movie) => (
               <Link to={`/movie/${movie.id}`} key={movie.id} className="block group">
-                <div className="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 h-full flex flex-col">
+                <div className="bg-white dark:bg-dark-bg-secondary rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 h-full flex flex-col">
                   <div className="h-64 overflow-hidden">
                     <img 
                       src={movie.poster_url} 
@@ -238,15 +238,15 @@ const HomePage = () => {
                     />
                   </div>
                   <div className="p-4 flex-grow flex flex-col">
-                    <h3 className="font-bold text-lg mb-1 text-cinema-black group-hover:text-cinema-red transition-colors duration-200">
+                    <h3 className="font-bold text-lg mb-1 text-cinema-black dark:text-white group-hover:text-cinema-red transition-colors duration-200">
                       {movie.title}
                     </h3>
-                    <p className="text-cinema-gray text-sm mb-2 flex items-center">
+                    <p className="text-cinema-gray dark:text-gray-400 text-sm mb-2 flex items-center">
                       <span className="mr-2">{movie.duration} min</span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-cinema-gray inline-block"></span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-cinema-gray dark:bg-gray-500 inline-block"></span>
                       <span className="ml-2">{movie.release_date}</span>
                     </p>
-                    <p className="text-cinema-black line-clamp-3 text-sm flex-grow">
+                    <p className="text-cinema-black dark:text-gray-300 line-clamp-3 text-sm flex-grow">
                       {movie.description}
                     </p>
                     <div className="mt-4 flex justify-between items-center">
@@ -275,15 +275,15 @@ const HomePage = () => {
       </section>
 
       {/* Cinema Features/Amenities */}
-      <section className="py-16 bg-gray-50 rounded-xl shadow-md mb-16">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md mb-16 transition-colors duration-300">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-cinema-black">Why Choose Our Cinema</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-cinema-black dark:text-white">Why Choose Our Cinema</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-md text-center transform transition duration-300 hover:-translate-y-2 hover:shadow-lg">
+              <div key={index} className="bg-white dark:bg-dark-bg-secondary p-8 rounded-xl shadow-md text-center transform transition duration-300 hover:-translate-y-2 hover:shadow-lg">
                 <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold mb-2 text-cinema-black">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <h3 className="text-xl font-bold mb-2 text-cinema-black dark:text-white">{feature.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
               </div>
             ))}
           </div>

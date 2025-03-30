@@ -123,8 +123,8 @@ const Movies = () => {
 
   return (
     <div className="movies-page pb-12">
-      {/* Hero Banner */}
-      <div className="bg-gradient-to-r from-cinema-black to-cinema-red-dark text-white py-16 px-4 mb-10 rounded-b-2xl relative overflow-hidden">
+      {/* Hero Banner with dark mode support */}
+      <div className="bg-gradient-to-r from-cinema-black to-cinema-red-dark dark:from-gray-900 dark:to-cinema-red-dark text-white py-16 px-4 mb-10 rounded-b-2xl relative overflow-hidden transition-colors duration-300">
         <div className="absolute inset-0 opacity-20">
           <img 
             src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
@@ -142,8 +142,8 @@ const Movies = () => {
       </div>
       
       <div className="container mx-auto px-4">
-        {/* Search and Filters Section */}
-        <div className="bg-white p-6 rounded-xl shadow-md mb-8">
+        {/* Search and Filters Section with dark mode */}
+        <div className="bg-white dark:bg-dark-bg-secondary p-6 rounded-xl shadow-md dark:shadow-gray-900 mb-8 transition-colors duration-300">
           <div className="flex flex-col md:flex-row gap-4 mb-6">
             {/* Search Input */}
             <div className="md:flex-1">
@@ -196,7 +196,7 @@ const Movies = () => {
             </div>
           </div>
           
-          {/* Now Showing Toggle */}
+          {/* Now Showing Toggle with dark mode */}
           <div className="flex items-center">
             <label className="inline-flex items-center cursor-pointer">
               <input 
@@ -205,20 +205,20 @@ const Movies = () => {
                 checked={filters.showingOnly}
                 onChange={handleShowingToggle}
               />
-              <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-cinema-red-light rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cinema-red"></div>
-              <span className="ml-3 text-sm font-medium text-gray-700">Now Showing Only</span>
+              <div className="relative w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-cinema-red-light dark:peer-focus:ring-cinema-red-dark rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cinema-red"></div>
+              <span className="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">Now Showing Only</span>
             </label>
           </div>
         </div>
         
-        {/* Results Count */}
+        {/* Results Count with dark mode */}
         <div className="mb-6">
-          <p className="text-gray-600">
+          <p className="text-gray-600 dark:text-gray-400">
             {filteredMovies.length} {filteredMovies.length === 1 ? 'movie' : 'movies'} found
           </p>
         </div>
         
-        {/* Movies Grid */}
+        {/* Movies Grid with dark mode */}
         {filteredMovies.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {filteredMovies.map((movie, index) => (
@@ -228,7 +228,7 @@ const Movies = () => {
                 className="block group movie-card" 
                 style={{ '--animation-order': index }}
               >
-                <div className="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 h-full flex flex-col">
+                <div className="bg-white dark:bg-dark-bg-secondary rounded-xl overflow-hidden shadow-lg dark:shadow-gray-900 transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 h-full flex flex-col">
                   <div className="relative h-96 sm:h-80 overflow-hidden movie-poster-hover">
                     <img 
                       src={movie.poster_url} 
@@ -259,15 +259,15 @@ const Movies = () => {
                     </div>
                   </div>
                   <div className="p-4 flex-grow flex flex-col">
-                    <h3 className="font-bold text-lg mb-1 text-cinema-black group-hover:text-cinema-red transition-colors duration-200">
+                    <h3 className="font-bold text-lg mb-1 text-cinema-black dark:text-white group-hover:text-cinema-red dark:group-hover:text-cinema-red transition-colors duration-200">
                       {movie.title}
                     </h3>
-                    <p className="text-cinema-gray text-sm mb-2 flex items-center flex-wrap">
+                    <p className="text-cinema-gray dark:text-gray-400 text-sm mb-2 flex items-center flex-wrap">
                       <span className="mr-2">{movie.duration} min</span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-cinema-gray inline-block mx-1"></span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-cinema-gray dark:bg-gray-500 inline-block mx-1"></span>
                       <span>{movie.release_date}</span>
                     </p>
-                    <p className="text-cinema-black line-clamp-3 text-sm flex-grow">
+                    <p className="text-cinema-black dark:text-gray-300 line-clamp-3 text-sm flex-grow">
                       {movie.description}
                     </p>
                     <div className="mt-4 flex justify-between items-center">
@@ -275,7 +275,7 @@ const Movies = () => {
                         Book Now
                       </span>
                       {movie.genres && movie.genres.length > 0 && (
-                        <span className="text-xs text-cinema-gray">
+                        <span className="text-xs text-cinema-gray dark:text-gray-400">
                           {movie.genres[0]}
                         </span>
                       )}
@@ -286,12 +286,12 @@ const Movies = () => {
             ))}
           </div>
         ) : (
-          <div className="bg-white p-12 text-center rounded-xl shadow">
+          <div className="bg-white dark:bg-dark-bg-secondary p-12 text-center rounded-xl shadow dark:shadow-gray-900">
             <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            <h3 className="text-xl font-bold text-gray-700 mb-1">No Movies Found</h3>
-            <p className="text-gray-500">Try adjusting your search or filter criteria</p>
+            <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-1">No Movies Found</h3>
+            <p className="text-gray-500 dark:text-gray-400">Try adjusting your search or filter criteria</p>
           </div>
         )}
       </div>
