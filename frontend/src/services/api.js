@@ -33,7 +33,7 @@ export const authApi = {
 // Interceptor to add authorization header
 api.interceptors.request.use(
   (config) => {
-    console.log('API Request:', config.method, config.url);
+    console.log('API Request:', config.method, config.url, config.params || {});
     const token = localStorage.getItem('token');
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;
@@ -46,10 +46,14 @@ api.interceptors.request.use(
   }
 );
 
-// Handle token expiration
+// Handle token expiration and debug responses
 api.interceptors.response.use(
   (response) => {
-    console.log('API Response:', response.status, response.config.url);
+    console.log('API Response:', response.status, response.config.url, 
+                'Data count:', Array.isArray(response.data) ? response.data.length : 'N/A');
+    if (Array.isArray(response.data) && response.data.length === 0) {
+      console.warn('Empty array returned from API:', response.config.url);
+    }
     return response;
   },
   (error) => {

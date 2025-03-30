@@ -34,7 +34,8 @@ const pl = {
       bookNow: 'Zarezerwuj',
       mins: 'min',
       viewAllBtn: "Zobacz wszystkie filmy", // NEW KEY
-      bookNowBtn: "Zarezerwuj"          // NEW KEY
+      bookNowBtn: "Zarezerwuj",          // NEW KEY
+      noMovies: "Aktualnie brak filmów w repertuarze." // NEW KEY
     },
     why: {
       title: 'Dlaczego Warto Wybrać Nasze Kino',

@@ -34,7 +34,8 @@ const en = {
       bookNow: 'Book Now',
       mins: 'min',
       viewAllBtn: "View All Movies",  // NEW KEY
-      bookNowBtn: "Book Now"         // NEW KEY
+      bookNowBtn: "Book Now",         // NEW KEY
+      noMovies: "No movies are currently showing." // NEW KEY
     },
     why: {
       title: 'Why Choose Our Cinema',
