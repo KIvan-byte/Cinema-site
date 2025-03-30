@@ -323,20 +323,46 @@ const en = {
     text: "© 2025 Cinema Tickets. All rights reserved." // New or updated key
   },
 
+  // Login Page
   login: {
     username: "Username",
     usernamePlaceholder: "Enter your username",
     password: "Password",
     passwordPlaceholder: "Enter your password",
-    noAccount: "Don't have an account?"
+    noAccount: "Don't have an account?",
+    welcomeBack: "Welcome back! Please sign in to your account",
+    rememberMe: "Remember me",
+    forgotPassword: "Forgot your password?",
+    enterBoth: "Please enter both username and password",
+    invalidCredentials: "Invalid username or password",
+    errorOccurred: "An error occurred. Please try again."
   },
-  register: { // NEW KEYS for register page placeholders
+  
+  // Register Page
+  register: {
     usernamePlaceholder: "Enter your desired username",
     emailPlaceholder: "Enter your email address",
     passwordPlaceholder: "Enter your password",
     confirmPasswordPlaceholder: "Confirm your password",
-    alreadyHaveAccount: "Already have an account?"
+    alreadyHaveAccount: "Already have an account?",
+    successMessage: "Registration successful! Please log in.",
+    createAccount: "Create your account to access exclusive features",
+    username: "Username",
+    email: "Email",
+    password: "Password",
+    confirmPassword: "Confirm Password",
+    usernameRequired: "Username is required",
+    usernameLength: "Username must be at least 3 characters",
+    emailRequired: "Email is required",
+    emailInvalid: "Invalid email format",
+    passwordRequired: "Password is required",
+    passwordLength: "Password must be at least 6 characters",
+    confirmPasswordRequired: "Please confirm your password",
+    passwordMismatch: "Passwords do not match",
+    registrationFailed: "Registration failed. Please try again.",
+    errorOccurred: "An error occurred during registration. Please try again."
   },
+
   movie: {
     description: "Description", // NEW KEY
     showtimes: "Showtimes",

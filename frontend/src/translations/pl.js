@@ -332,7 +332,13 @@ const pl = {
     usernamePlaceholder: "Wpisz swoją nazwę użytkownika",
     password: "Hasło",
     passwordPlaceholder: "Wpisz swoje hasło",
-    noAccount: "Nie masz konta?"
+    noAccount: "Nie masz konta?",
+    welcomeBack: "Witaj z powrotem! Zaloguj się na swoje konto",
+    rememberMe: "Zapamiętaj mnie",
+    forgotPassword: "Zapomniałeś hasła?",
+    enterBoth: "Wprowadź nazwę użytkownika i hasło",
+    invalidCredentials: "Nieprawidłowa nazwa użytkownika lub hasło",
+    errorOccurred: "Wystąpił błąd. Spróbuj ponownie."
   },
 
   // Register Page
@@ -341,7 +347,23 @@ const pl = {
     emailPlaceholder: "Wpisz swój adres e-mail",
     passwordPlaceholder: "Wpisz swoje hasło",
     confirmPasswordPlaceholder: "Potwierdź swoje hasło",
-    alreadyHaveAccount: "Masz już konto?"
+    alreadyHaveAccount: "Masz już konto?",
+    successMessage: "Rejestracja zakończona sukcesem! Zaloguj się.",
+    createAccount: "Stwórz konto, aby uzyskać dostęp do wyjątkowych funkcji",
+    username: "Nazwa użytkownika",
+    email: "Email",
+    password: "Hasło",
+    confirmPassword: "Potwierdź hasło",
+    usernameRequired: "Nazwa użytkownika jest wymagana",
+    usernameLength: "Nazwa użytkownika musi mieć co najmniej 3 znaki",
+    emailRequired: "Email jest wymagany",
+    emailInvalid: "Nieprawidłowy format adresu email",
+    passwordRequired: "Hasło jest wymagane",
+    passwordLength: "Hasło musi mieć co najmniej 6 znaków",
+    confirmPasswordRequired: "Proszę potwierdzić hasło",
+    passwordMismatch: "Hasła nie są identyczne",
+    registrationFailed: "Rejestracja nie powiodła się. Spróbuj ponownie.",
+    errorOccurred: "Wystąpił błąd podczas rejestracji. Spróbuj ponownie."
   },
 
   // Movie Page (details)
