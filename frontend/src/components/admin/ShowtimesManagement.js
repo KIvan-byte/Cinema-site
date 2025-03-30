@@ -164,55 +164,59 @@ const ShowtimesManagement = () => {
   };
 
   if (loading && showtimes.length === 0) {
-    return <div className="text-center py-10">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center py-20">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cinema-red"></div>
+      </div>
+    );
   }
 
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Showtimes Management</h1>
+        <h1 className="text-2xl font-bold text-cinema-black">Showtimes Management</h1>
         <button
           onClick={() => setIsAddModalOpen(true)}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="bg-cinema-red-dark text-white px-4 py-2 rounded-lg hover:bg-cinema-red transition-colors"
         >
           Add New Showtime
         </button>
       </div>
 
       {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        <div className="bg-red-100 border border-cinema-red text-cinema-red-dark px-4 py-3 rounded-lg mb-4">
           {error}
         </div>
       )}
 
-      <div className="bg-white rounded-lg shadow overflow-hidden">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <table className="min-w-full divide-y divide-cinema-gray-light">
+          <thead className="bg-cinema-gray-light">
             <tr>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-cinema-black uppercase tracking-wider">
                 Movie
               </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-cinema-black uppercase tracking-wider">
                 Hall
               </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-cinema-black uppercase tracking-wider">
                 Date & Time
               </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-cinema-black uppercase tracking-wider">
                 Price
               </th>
-              <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-cinema-black uppercase tracking-wider">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-white divide-y divide-cinema-gray-light">
             {showtimes.map((showtime) => {
               const movie = movies.find(m => m.id === showtime.movie_id);
               const hall = halls.find(h => h.id === showtime.hall_id);
               
               return (
-                <tr key={showtime.id}>
+                <tr key={showtime.id} className="hover:bg-cinema-gray-light transition-colors">
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
                       {movie && (
@@ -221,36 +225,36 @@ const ShowtimesManagement = () => {
                             <img className="h-10 w-10 rounded object-cover" src={movie.poster_url} alt="" />
                           </div>
                           <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">{movie.title}</div>
+                            <div className="text-sm font-medium text-cinema-black">{movie.title}</div>
                           </div>
                         </>
                       )}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{hall?.name || 'Unknown'}</div>
+                    <div className="text-sm text-cinema-black">{hall?.name || 'Unknown'}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">
+                    <div className="text-sm text-cinema-black">
                       {format(new Date(showtime.start_time), 'MMM dd, yyyy')}
                     </div>
-                    <div className="text-sm text-gray-500">
+                    <div className="text-sm text-cinema-gray">
                       {format(new Date(showtime.start_time), 'h:mm a')}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">${showtime.price}</div>
+                    <div className="text-sm text-cinema-black">${showtime.price.toFixed(2)}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <button 
                       onClick={() => openEditModal(showtime)}
-                      className="text-indigo-600 hover:text-indigo-900 mr-4"
+                      className="text-cinema-orange hover:text-cinema-orange-light mr-4"
                     >
                       Edit
                     </button>
                     <button 
                       onClick={() => handleDeleteShowtime(showtime.id)}
-                      className="text-red-600 hover:text-red-900"
+                      className="text-cinema-red-dark hover:text-cinema-red"
                     >
                       Delete
                     </button>
@@ -264,17 +268,17 @@ const ShowtimesManagement = () => {
 
       {/* Add Showtime Modal */}
       {isAddModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg max-w-md w-full p-6">
-            <h2 className="text-xl font-bold mb-4">Add New Showtime</h2>
+        <div className="fixed inset-0 bg-cinema-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-xl max-w-md w-full p-6 shadow-lg">
+            <h2 className="text-xl font-bold mb-4 text-cinema-black">Add New Showtime</h2>
             <form onSubmit={handleAddShowtime}>
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Movie</label>
+                <label className="block text-cinema-black mb-2">Movie</label>
                 <select
                   name="movie_id"
                   value={formData.movie_id}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
                   required
                 >
                   <option value="">Select a movie</option>
@@ -287,12 +291,12 @@ const ShowtimesManagement = () => {
               </div>
               
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Hall</label>
+                <label className="block text-cinema-black mb-2">Hall</label>
                 <select
                   name="hall_id"
                   value={formData.hall_id}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
                   required
                 >
                   <option value="">Select a hall</option>
@@ -305,34 +309,34 @@ const ShowtimesManagement = () => {
               </div>
               
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Start Time</label>
+                <label className="block text-cinema-black mb-2">Start Time</label>
                 <input
                   type="datetime-local"
                   name="start_time"
                   value={formData.start_time}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
                   required
                 />
               </div>
               
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2">End Time</label>
+                <label className="block text-cinema-black mb-2">End Time</label>
                 <input
                   type="datetime-local"
                   name="end_time"
                   value={formData.end_time}
-                  className="w-full px-3 py-2 border border-gray-300 rounded bg-gray-100"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg bg-cinema-gray-light"
                   required
                   readOnly
                 />
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-cinema-gray mt-1">
                   {formData.end_time ? 'Auto-calculated based on movie duration' : 'Select movie and start time first'}
                 </p>
               </div>
               
               <div className="mb-6">
-                <label className="block text-gray-700 mb-2">Ticket Price ($)</label>
+                <label className="block text-cinema-black mb-2">Ticket Price ($)</label>
                 <input
                   type="number"
                   step="0.01"
@@ -340,7 +344,7 @@ const ShowtimesManagement = () => {
                   name="price"
                   value={formData.price}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
                   required
                 />
               </div>
@@ -352,13 +356,13 @@ const ShowtimesManagement = () => {
                     setIsAddModalOpen(false);
                     resetForm();
                   }}
-                  className="px-4 py-2 text-gray-600 hover:text-gray-800"
+                  className="px-4 py-2 text-cinema-gray hover:text-cinema-black transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                  className="px-4 py-2 bg-cinema-red-dark text-white rounded-lg hover:bg-cinema-red transition-colors"
                 >
                   Add Showtime
                 </button>
@@ -370,17 +374,17 @@ const ShowtimesManagement = () => {
 
       {/* Edit Showtime Modal */}
       {isEditModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg max-w-md w-full p-6">
-            <h2 className="text-xl font-bold mb-4">Edit Showtime</h2>
+        <div className="fixed inset-0 bg-cinema-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-xl max-w-md w-full p-6 shadow-lg">
+            <h2 className="text-xl font-bold mb-4 text-cinema-black">Edit Showtime</h2>
             <form onSubmit={handleEditShowtime}>
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Movie</label>
+                <label className="block text-cinema-black mb-2">Movie</label>
                 <select
                   name="movie_id"
                   value={formData.movie_id}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
                   required
                 >
                   <option value="">Select a movie</option>
@@ -393,12 +397,12 @@ const ShowtimesManagement = () => {
               </div>
               
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Hall</label>
+                <label className="block text-cinema-black mb-2">Hall</label>
                 <select
                   name="hall_id"
                   value={formData.hall_id}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
                   required
                 >
                   <option value="">Select a hall</option>
@@ -411,34 +415,34 @@ const ShowtimesManagement = () => {
               </div>
               
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Start Time</label>
+                <label className="block text-cinema-black mb-2">Start Time</label>
                 <input
                   type="datetime-local"
                   name="start_time"
                   value={formData.start_time}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
                   required
                 />
               </div>
               
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2">End Time</label>
+                <label className="block text-cinema-black mb-2">End Time</label>
                 <input
                   type="datetime-local"
                   name="end_time"
                   value={formData.end_time}
-                  className="w-full px-3 py-2 border border-gray-300 rounded bg-gray-100"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg bg-cinema-gray-light"
                   required
                   readOnly
                 />
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-cinema-gray mt-1">
                   {formData.end_time ? 'Auto-calculated based on movie duration' : 'Select movie and start time first'}
                 </p>
               </div>
               
               <div className="mb-6">
-                <label className="block text-gray-700 mb-2">Ticket Price ($)</label>
+                <label className="block text-cinema-black mb-2">Ticket Price ($)</label>
                 <input
                   type="number"
                   step="0.01"
@@ -446,7 +450,7 @@ const ShowtimesManagement = () => {
                   name="price"
                   value={formData.price}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
                   required
                 />
               </div>
@@ -458,13 +462,13 @@ const ShowtimesManagement = () => {
                     setIsEditModalOpen(false);
                     resetForm();
                   }}
-                  className="px-4 py-2 text-gray-600 hover:text-gray-800"
+                  className="px-4 py-2 text-cinema-gray hover:text-cinema-black transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                  className="px-4 py-2 bg-cinema-red-dark text-white rounded-lg hover:bg-cinema-red transition-colors"
                 >
                   Update Showtime
                 </button>

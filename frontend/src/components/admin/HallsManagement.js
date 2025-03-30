@@ -131,67 +131,71 @@ const HallsManagement = () => {
   };
 
   if (loading && halls.length === 0) {
-    return <div className="text-center py-10">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center py-20">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cinema-red"></div>
+      </div>
+    );
   }
 
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Halls Management</h1>
+        <h1 className="text-2xl font-bold text-cinema-black">Halls Management</h1>
         <button
           onClick={() => setIsAddModalOpen(true)}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="bg-cinema-red-dark text-white px-4 py-2 rounded-lg hover:bg-cinema-red transition-colors"
         >
           Add New Hall
         </button>
       </div>
 
       {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        <div className="bg-red-100 border border-cinema-red text-cinema-red-dark px-4 py-3 rounded-lg mb-4">
           {error}
         </div>
       )}
 
-      <div className="bg-white rounded-lg shadow overflow-hidden">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <table className="min-w-full divide-y divide-cinema-gray-light">
+          <thead className="bg-cinema-gray-light">
             <tr>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-cinema-black uppercase tracking-wider">
                 Name
               </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-cinema-black uppercase tracking-wider">
                 Capacity
               </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-cinema-black uppercase tracking-wider">
                 Layout
               </th>
-              <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-cinema-black uppercase tracking-wider">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-white divide-y divide-cinema-gray-light">
             {halls.map((hall) => (
-              <tr key={hall.id}>
+              <tr key={hall.id} className="hover:bg-cinema-gray-light transition-colors">
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">{hall.name}</div>
+                  <div className="text-sm font-medium text-cinema-black">{hall.name}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">{hall.capacity} seats</div>
+                  <div className="text-sm text-cinema-black">{hall.capacity} seats</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">{hall.rows} rows × {hall.seats_per_row} seats</div>
+                  <div className="text-sm text-cinema-black">{hall.rows} rows × {hall.seats_per_row} seats</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <button 
                     onClick={() => openEditModal(hall)}
-                    className="text-indigo-600 hover:text-indigo-900 mr-4"
+                    className="text-cinema-orange hover:text-cinema-orange-light mr-4"
                   >
                     Edit
                   </button>
                   <button 
                     onClick={() => handleDeleteHall(hall.id)}
-                    className="text-red-600 hover:text-red-900"
+                    className="text-cinema-red-dark hover:text-cinema-red"
                   >
                     Delete
                   </button>
@@ -204,58 +208,58 @@ const HallsManagement = () => {
 
       {/* Add Hall Modal */}
       {isAddModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg max-w-md w-full p-6">
-            <h2 className="text-xl font-bold mb-4">Add New Hall</h2>
+        <div className="fixed inset-0 bg-cinema-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-xl max-w-md w-full p-6 shadow-lg">
+            <h2 className="text-xl font-bold mb-4 text-cinema-black">Add New Hall</h2>
             <form onSubmit={handleAddHall}>
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Hall Name</label>
+                <label className="block text-cinema-black mb-2">Hall Name</label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
                   required
                 />
               </div>
               
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Number of Rows</label>
+                <label className="block text-cinema-black mb-2">Number of Rows</label>
                 <input
                   type="number"
                   name="rows"
                   value={formData.rows}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
                   min="1"
                   required
                 />
               </div>
               
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Seats per Row</label>
+                <label className="block text-cinema-black mb-2">Seats per Row</label>
                 <input
                   type="number"
                   name="seats_per_row"
                   value={formData.seats_per_row}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
                   min="1"
                   required
                 />
               </div>
               
               <div className="mb-6">
-                <label className="block text-gray-700 mb-2">Total Capacity</label>
+                <label className="block text-cinema-black mb-2">Total Capacity</label>
                 <input
                   type="number"
                   name="capacity"
                   value={formData.capacity}
-                  className="w-full px-3 py-2 border border-gray-300 rounded bg-gray-100"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg bg-cinema-gray-light"
                   readOnly
                 />
-                <p className="text-sm text-gray-500 mt-1">Auto-calculated from rows and seats</p>
+                <p className="text-sm text-cinema-gray mt-1">Auto-calculated from rows and seats</p>
               </div>
               
               <div className="flex justify-end space-x-4">
@@ -265,13 +269,13 @@ const HallsManagement = () => {
                     setIsAddModalOpen(false);
                     resetForm();
                   }}
-                  className="px-4 py-2 text-gray-600 hover:text-gray-800"
+                  className="px-4 py-2 text-cinema-gray hover:text-cinema-black transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                  className="px-4 py-2 bg-cinema-red-dark text-white rounded-lg hover:bg-cinema-red transition-colors"
                 >
                   Add Hall
                 </button>
@@ -283,58 +287,58 @@ const HallsManagement = () => {
 
       {/* Edit Hall Modal */}
       {isEditModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg max-w-md w-full p-6">
-            <h2 className="text-xl font-bold mb-4">Edit Hall</h2>
+        <div className="fixed inset-0 bg-cinema-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-xl max-w-md w-full p-6 shadow-lg">
+            <h2 className="text-xl font-bold mb-4 text-cinema-black">Edit Hall</h2>
             <form onSubmit={handleEditHall}>
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Hall Name</label>
+                <label className="block text-cinema-black mb-2">Hall Name</label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
                   required
                 />
               </div>
               
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Number of Rows</label>
+                <label className="block text-cinema-black mb-2">Number of Rows</label>
                 <input
                   type="number"
                   name="rows"
                   value={formData.rows}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
                   min="1"
                   required
                 />
               </div>
               
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Seats per Row</label>
+                <label className="block text-cinema-black mb-2">Seats per Row</label>
                 <input
                   type="number"
                   name="seats_per_row"
                   value={formData.seats_per_row}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
                   min="1"
                   required
                 />
               </div>
               
               <div className="mb-6">
-                <label className="block text-gray-700 mb-2">Total Capacity</label>
+                <label className="block text-cinema-black mb-2">Total Capacity</label>
                 <input
                   type="number"
                   name="capacity"
                   value={formData.capacity}
-                  className="w-full px-3 py-2 border border-gray-300 rounded bg-gray-100"
+                  className="w-full px-3 py-2 border border-cinema-gray-light rounded-lg bg-cinema-gray-light"
                   readOnly
                 />
-                <p className="text-sm text-gray-500 mt-1">Auto-calculated from rows and seats</p>
+                <p className="text-sm text-cinema-gray mt-1">Auto-calculated from rows and seats</p>
               </div>
               
               <div className="flex justify-end space-x-4">
@@ -344,13 +348,13 @@ const HallsManagement = () => {
                     setIsEditModalOpen(false);
                     resetForm();
                   }}
-                  className="px-4 py-2 text-gray-600 hover:text-gray-800"
+                  className="px-4 py-2 text-cinema-gray hover:text-cinema-black transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                  className="px-4 py-2 bg-cinema-red-dark text-white rounded-lg hover:bg-cinema-red transition-colors"
                 >
                   Update Hall
                 </button>

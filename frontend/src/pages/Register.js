@@ -59,18 +59,18 @@ const Register = () => {
   
   return (
     <div className="max-w-md mx-auto mt-8">
-      <div className="bg-white p-8 border border-gray-300 rounded-lg shadow-lg">
-        <h1 className="text-2xl font-bold mb-6 text-center">Register</h1>
+      <div className="bg-white p-8 border border-cinema-gray-light rounded-xl shadow-lg">
+        <h1 className="text-2xl font-bold mb-6 text-center text-cinema-black">Register</h1>
         
         {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          <div className="bg-red-100 border border-cinema-red text-cinema-red-dark px-4 py-3 rounded-lg mb-4">
             {error}
           </div>
         )}
         
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="username" className="block text-gray-700 mb-2">
+            <label htmlFor="username" className="block text-cinema-black mb-2">
               Username
             </label>
             <input
@@ -78,13 +78,13 @@ const Register = () => {
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
               placeholder="Choose a username"
             />
           </div>
           
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 mb-2">
+            <label htmlFor="email" className="block text-cinema-black mb-2">
               Email
             </label>
             <input
@@ -92,13 +92,13 @@ const Register = () => {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
               placeholder="Enter your email"
             />
           </div>
           
           <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700 mb-2">
+            <label htmlFor="password" className="block text-cinema-black mb-2">
               Password
             </label>
             <input
@@ -106,13 +106,13 @@ const Register = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
               placeholder="Create a password"
             />
           </div>
           
           <div className="mb-6">
-            <label htmlFor="confirmPassword" className="block text-gray-700 mb-2">
+            <label htmlFor="confirmPassword" className="block text-cinema-black mb-2">
               Confirm Password
             </label>
             <input
@@ -120,7 +120,7 @@ const Register = () => {
               id="confirmPassword"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-cinema-gray-light rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red-light"
               placeholder="Confirm your password"
             />
           </div>
@@ -128,8 +128,8 @@ const Register = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-2 px-4 rounded font-bold text-white ${
-              loading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'
+            className={`w-full py-3 px-4 rounded-lg font-bold text-white ${
+              loading ? 'bg-cinema-gray cursor-not-allowed' : 'bg-cinema-red-dark hover:bg-cinema-red transition-colors'
             }`}
           >
             {loading ? 'Registering...' : 'Register'}
@@ -137,9 +137,9 @@ const Register = () => {
         </form>
         
         <div className="mt-4 text-center">
-          <p>
+          <p className="text-cinema-black">
             Already have an account?{' '}
-            <Link to="/login" className="text-blue-600 hover:underline">
+            <Link to="/login" className="text-cinema-red-dark hover:text-cinema-orange transition-colors">
               Login
             </Link>
           </p>

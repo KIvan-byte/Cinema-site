@@ -14,7 +14,6 @@ const Checkout = () => {
   useEffect(() => {
     const fetchReservation = async () => {
       try {
-        // Note: You'll need to create this endpoint in your backend
         const response = await api.get(`/reservations/${reservationId}`);
         setReservation(response.data);
         setLoading(false);
@@ -31,7 +30,6 @@ const Checkout = () => {
     setProcessing(true);
     try {
       // This is just a simulation of payment processing
-      // In a real app, you'd integrate with a payment gateway
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       // Update reservation status to completed
@@ -47,110 +45,126 @@ const Checkout = () => {
   };
 
   if (loading) {
-    return <div className="text-center py-10">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center py-20">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cinema-red"></div>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="text-center py-10 text-red-600">{error}</div>;
+    return (
+      <div className="text-center py-10 px-4">
+        <div className="bg-red-100 border border-cinema-red text-cinema-red-dark p-4 rounded-lg inline-block">
+          {error}
+        </div>
+      </div>
+    );
   }
 
   if (!reservation) {
-    return <div className="text-center py-10 text-red-600">Reservation not found</div>;
+    return (
+      <div className="text-center py-10">
+        <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 p-4 rounded-lg inline-block">
+          Reservation not found
+        </div>
+      </div>
+    );
   }
 
-  // Расчет общей стоимости
+  // Calculate total price
   const totalPrice = reservation.showtime.price * reservation.seats.length;
 
   return (
-    <div className="max-w-xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Checkout</h1>
+    <div className="container mx-auto max-w-xl px-4 py-6">
+      <h1 className="text-2xl md:text-3xl font-bold mb-6 text-cinema-black">Checkout</h1>
       
-      <div className="bg-white rounded-lg shadow-md overflow-hidden mb-8">
-        <div className="bg-blue-600 text-white p-4">
-          <h2 className="font-bold text-lg">Order Summary</h2>
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+        <div className="bg-gradient-to-r from-cinema-red to-cinema-red-dark text-white p-5">
+          <h2 className="font-bold text-xl">Order Summary</h2>
         </div>
-        <div className="p-4">
+        <div className="p-5">
           <div className="mb-4">
-            <p className="text-gray-600">Movie:</p>
-            <p className="font-semibold">{reservation.showtime?.movie?.title}</p>
+            <p className="text-cinema-gray mb-1">Movie:</p>
+            <p className="font-semibold text-cinema-black">{reservation.showtime?.movie?.title}</p>
           </div>
           <div className="mb-4">
-            <p className="text-gray-600">Date & Time:</p>
-            <p className="font-semibold">
+            <p className="text-cinema-gray mb-1">Date & Time:</p>
+            <p className="font-semibold text-cinema-black">
               {new Date(reservation.showtime?.start_time).toLocaleString()}
             </p>
           </div>
           <div className="mb-4">
-            <p className="text-gray-600">Seats:</p>
-            <p className="font-semibold">
+            <p className="text-cinema-gray mb-1">Seats:</p>
+            <p className="font-semibold text-cinema-black">
               {reservation.seats.map(seat => `Row ${seat.row}, Seat ${seat.number}`).join(', ')}
             </p>
           </div>
-          <div className="pt-4 border-t border-gray-200">
+          <div className="pt-4 border-t border-cinema-gray-light">
             <div className="flex justify-between">
-              <p className="font-bold">Total Amount:</p>
-              <p className="font-bold">${totalPrice.toFixed(2)}</p>
+              <p className="font-bold text-cinema-black">Total Amount:</p>
+              <p className="font-bold text-cinema-red-dark">${totalPrice.toFixed(2)}</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow-md overflow-hidden mb-8">
-        <div className="bg-blue-600 text-white p-4">
-          <h2 className="font-bold text-lg">Payment Method</h2>
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+        <div className="bg-gradient-to-r from-cinema-red to-cinema-red-dark text-white p-5">
+          <h2 className="font-bold text-xl">Payment Method</h2>
         </div>
-        <div className="p-4">
+        <div className="p-5">
           <div className="space-y-4">
-            <label className="flex items-center space-x-3">
+            <label className="flex items-center space-x-3 p-2 rounded hover:bg-cinema-gray-light cursor-pointer transition-colors">
               <input
                 type="radio"
                 name="paymentMethod"
                 value="credit_card"
                 checked={paymentMethod === 'credit_card'}
                 onChange={() => setPaymentMethod('credit_card')}
-                className="h-5 w-5 text-blue-600"
+                className="h-5 w-5 text-cinema-red-dark"
               />
-              <span>Credit Card</span>
+              <span className="text-cinema-black">Credit Card</span>
             </label>
 
-            <label className="flex items-center space-x-3">
+            <label className="flex items-center space-x-3 p-2 rounded hover:bg-cinema-gray-light cursor-pointer transition-colors">
               <input
                 type="radio"
                 name="paymentMethod"
                 value="paypal"
                 checked={paymentMethod === 'paypal'}
                 onChange={() => setPaymentMethod('paypal')}
-                className="h-5 w-5 text-blue-600"
+                className="h-5 w-5 text-cinema-red-dark"
               />
-              <span>PayPal</span>
+              <span className="text-cinema-black">PayPal</span>
             </label>
           </div>
 
           {paymentMethod === 'credit_card' && (
-            <div className="mt-4 space-y-4">
+            <div className="mt-6 space-y-4">
               <div>
-                <label className="block text-gray-700 mb-2">Card Number</label>
+                <label className="block text-cinema-black mb-2">Card Number</label>
                 <input
                   type="text"
                   placeholder="1234 5678 9012 3456"
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
+                  className="w-full px-4 py-3 border border-cinema-gray-light rounded-lg focus:ring-2 focus:ring-cinema-red-light focus:border-transparent"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-gray-700 mb-2">Expiration Date</label>
+                  <label className="block text-cinema-black mb-2">Expiration Date</label>
                   <input
                     type="text"
                     placeholder="MM/YY"
-                    className="w-full px-3 py-2 border border-gray-300 rounded"
+                    className="w-full px-4 py-3 border border-cinema-gray-light rounded-lg focus:ring-2 focus:ring-cinema-red-light focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-700 mb-2">CVV</label>
+                  <label className="block text-cinema-black mb-2">CVV</label>
                   <input
                     type="text"
                     placeholder="123"
-                    className="w-full px-3 py-2 border border-gray-300 rounded"
+                    className="w-full px-4 py-3 border border-cinema-gray-light rounded-lg focus:ring-2 focus:ring-cinema-red-light focus:border-transparent"
                   />
                 </div>
               </div>
@@ -164,10 +178,10 @@ const Checkout = () => {
           onClick={handlePayment}
           disabled={processing}
           className={`
-            py-3 px-8 rounded-lg font-bold text-white
+            py-3 px-10 rounded-lg font-bold text-white text-lg transition-colors
             ${processing 
-              ? 'bg-gray-400 cursor-not-allowed' 
-              : 'bg-blue-600 hover:bg-blue-700'
+              ? 'bg-cinema-gray cursor-not-allowed' 
+              : 'bg-cinema-red-dark hover:bg-cinema-red shadow-lg'
             }
           `}
         >

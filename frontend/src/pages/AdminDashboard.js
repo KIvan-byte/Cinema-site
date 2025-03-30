@@ -9,14 +9,14 @@ const AdminDashboard = () => {
   return (
     <div className="flex flex-col md:flex-row">
       {/* Sidebar */}
-      <div className="md:w-64 bg-gray-800 text-white md:min-h-screen p-4">
+      <div className="md:w-64 bg-cinema-black text-white md:min-h-screen p-4">
         <h1 className="text-xl font-bold mb-6">Admin Panel</h1>
         <nav className="space-y-2">
           <NavLink 
             to="/admin" 
             end
             className={({ isActive }) => 
-              `block p-2 rounded ${isActive ? 'bg-blue-600' : 'hover:bg-gray-700'}`
+              `block p-2 rounded ${isActive ? 'bg-cinema-red-dark' : 'hover:bg-cinema-red hover:bg-opacity-60'}`
             }
           >
             Statistics
@@ -24,7 +24,7 @@ const AdminDashboard = () => {
           <NavLink 
             to="/admin/movies" 
             className={({ isActive }) => 
-              `block p-2 rounded ${isActive ? 'bg-blue-600' : 'hover:bg-gray-700'}`
+              `block p-2 rounded ${isActive ? 'bg-cinema-red-dark' : 'hover:bg-cinema-red hover:bg-opacity-60'}`
             }
           >
             Movies
@@ -32,7 +32,7 @@ const AdminDashboard = () => {
           <NavLink 
             to="/admin/showtimes" 
             className={({ isActive }) => 
-              `block p-2 rounded ${isActive ? 'bg-blue-600' : 'hover:bg-gray-700'}`
+              `block p-2 rounded ${isActive ? 'bg-cinema-red-dark' : 'hover:bg-cinema-red hover:bg-opacity-60'}`
             }
           >
             Showtimes
@@ -40,7 +40,7 @@ const AdminDashboard = () => {
           <NavLink 
             to="/admin/halls" 
             className={({ isActive }) => 
-              `block p-2 rounded ${isActive ? 'bg-blue-600' : 'hover:bg-gray-700'}`
+              `block p-2 rounded ${isActive ? 'bg-cinema-red-dark' : 'hover:bg-cinema-red hover:bg-opacity-60'}`
             }
           >
             Halls
@@ -49,7 +49,7 @@ const AdminDashboard = () => {
       </div>
       
       {/* Content Area */}
-      <div className="flex-1 p-4">
+      <div className="flex-1 p-4 bg-cinema-gray-light">
         <Routes>
           <Route path="/" element={<Statistics />} />
           <Route path="/movies" element={<MoviesManagement />} />

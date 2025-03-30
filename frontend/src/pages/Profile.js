@@ -56,58 +56,62 @@ const Profile = () => {
   };
   
   if (loading) {
-    return <div className="text-center py-10">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center py-20">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cinema-red"></div>
+      </div>
+    );
   }
   
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-6">My Profile</h1>
+    <div className="container mx-auto px-4 py-6">
+      <h1 className="text-2xl font-bold mb-6 text-cinema-black">My Profile</h1>
       
       {successMessage && (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
+        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-6">
           {successMessage}
         </div>
       )}
       
-      <div className="bg-white rounded-lg shadow p-6 mb-8">
-        <h2 className="text-xl font-semibold mb-4">Account Information</h2>
+      <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+        <h2 className="text-xl font-semibold mb-4 text-cinema-black">Account Information</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <p className="text-gray-600">Username</p>
-            <p className="font-medium">{currentUser.username}</p>
+            <p className="text-cinema-gray mb-1">Username</p>
+            <p className="font-medium text-cinema-black">{currentUser.username}</p>
           </div>
         </div>
       </div>
       
-      <div className="bg-white rounded-lg shadow overflow-hidden">
-        <div className="bg-blue-600 text-white p-4">
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div className="bg-gradient-to-r from-cinema-red to-cinema-red-dark text-white p-5">
           <h2 className="text-xl font-semibold">My Tickets</h2>
         </div>
         
         {error && (
-          <div className="p-4 text-red-600">{error}</div>
+          <div className="p-4 text-cinema-red-dark">{error}</div>
         )}
         
         {reservations.length === 0 ? (
-          <div className="p-6 text-gray-600">
+          <div className="p-6 text-cinema-gray">
             You haven't purchased any tickets yet.
           </div>
         ) : (
-          <div className="divide-y divide-gray-200">
+          <div className="divide-y divide-cinema-gray-light">
             {reservations.map((reservation) => (
-              <div key={reservation.id} className="p-4 hover:bg-gray-50">
+              <div key={reservation.id} className="p-5 hover:bg-cinema-gray-light transition-colors">
                 <div className="flex flex-col md:flex-row md:justify-between md:items-center">
                   <div className="mb-4 md:mb-0">
-                    <h3 className="font-semibold text-lg">
+                    <h3 className="font-semibold text-lg text-cinema-black">
                       {reservation.showtime?.movie?.title}
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-cinema-gray">
                       {format(
                         new Date(reservation.showtime?.start_time), 
                         'MMMM dd, yyyy - h:mm a'
                       )}
                     </p>
-                    <p className="mt-1">
+                    <p className="mt-1 text-cinema-black">
                       {reservation.seats && reservation.seats.length > 0 ? (
                         <span>
                           Seats: {reservation.seats.map(seat => `Row ${seat.row}, Seat ${seat.number}`).join(', ')}
@@ -123,8 +127,8 @@ const Profile = () => {
                       reservation.payment_status === 'completed' 
                         ? 'bg-green-100 text-green-800'
                         : reservation.payment_status === 'pending'
-                        ? 'bg-yellow-100 text-yellow-800'
-                        : 'bg-red-100 text-red-800'
+                        ? 'bg-cinema-orange-light text-cinema-orange'
+                        : 'bg-red-100 text-cinema-red'
                     }`}>
                       {reservation.payment_status.charAt(0).toUpperCase() + 
                         reservation.payment_status.slice(1)}
@@ -132,7 +136,7 @@ const Profile = () => {
                     {reservation.payment_status === 'completed' && (
                       <button 
                         onClick={() => handleDownloadTicket(reservation.id)}
-                        className="mt-2 text-blue-600 hover:underline"
+                        className="mt-2 text-cinema-red-dark hover:text-cinema-orange transition-colors font-medium"
                       >
                         Download Ticket
                       </button>

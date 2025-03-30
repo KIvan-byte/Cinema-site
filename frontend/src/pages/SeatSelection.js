@@ -6,11 +6,11 @@ const SeatSelection = () => {
   const { showtimeId } = useParams();
   const navigate = useNavigate();
   const [seats, setSeats] = useState([]);
-  const [selectedSeats, setSelectedSeats] = useState([]);  // Изменено на массив
+  const [selectedSeats, setSelectedSeats] = useState([]);
   const [showtimeDetails, setShowtimeDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const MAX_SEATS = 5; // Максимальное количество мест для выбора
+  const MAX_SEATS = 5;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,19 +35,16 @@ const SeatSelection = () => {
   }, [showtimeId]);
 
   const handleSeatSelect = (seat) => {
-    if (seat.is_reserved) return; // Нельзя выбрать зарезервированное место
+    if (seat.is_reserved) return;
     
     setSelectedSeats(prevSelectedSeats => {
-      // Если место уже выбрано, удалить его из выбранных
       if (prevSelectedSeats.includes(seat.id)) {
         return prevSelectedSeats.filter(id => id !== seat.id);
       } 
-      // Если выбрано максимальное количество мест и пытаемся выбрать ещё одно - показать предупреждение
       else if (prevSelectedSeats.length >= MAX_SEATS) {
         alert(`You cannot select more than ${MAX_SEATS} seats at once`);
         return prevSelectedSeats;
       } 
-      // Добавить место к выбранным
       else {
         return [...prevSelectedSeats, seat.id];
       }
@@ -63,7 +60,7 @@ const SeatSelection = () => {
     try {
       const response = await api.post('/reservations/', {
         showtime_id: parseInt(showtimeId),
-        seat_ids: selectedSeats  // Отправляем массив ID мест
+        seat_ids: selectedSeats
       });
       
       navigate(`/checkout/${response.data.id}`);
@@ -73,11 +70,21 @@ const SeatSelection = () => {
   };
 
   if (loading) {
-    return <div className="text-center py-10">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center py-20">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cinema-red"></div>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="text-center py-10 text-red-600">{error}</div>;
+    return (
+      <div className="text-center py-10 px-4">
+        <div className="bg-red-100 border border-cinema-red text-cinema-red-dark p-4 rounded-lg inline-block">
+          {error}
+        </div>
+      </div>
+    );
   }
 
   // Group seats by row for better display
@@ -89,39 +96,49 @@ const SeatSelection = () => {
     return acc;
   }, {});
 
-  // Расчет общей стоимости
   const totalPrice = showtimeDetails ? (showtimeDetails.price * selectedSeats.length) : 0;
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-6">Select Your Seats</h1>
+    <div className="container mx-auto px-4 py-6">
+      <h1 className="text-2xl md:text-3xl font-bold mb-6 text-cinema-black">Select Your Seats</h1>
       
       {showtimeDetails && (
-        <div className="mb-8 bg-gray-100 p-4 rounded-lg">
-          <p className="font-bold">{showtimeDetails.movie?.title}</p>
-          <p>Hall: {showtimeDetails.hall?.name}</p>
-          <p>Time: {new Date(showtimeDetails.start_time).toLocaleString()}</p>
-          <p>Price per seat: ${showtimeDetails.price}</p>
-          <p className="font-semibold mt-2">
-            Selected: {selectedSeats.length} {selectedSeats.length === 1 ? 'seat' : 'seats'}
-          </p>
-          {selectedSeats.length > 0 && (
-            <p className="font-bold text-blue-600">Total: ${totalPrice.toFixed(2)}</p>
-          )}
+        <div className="mb-8 bg-white rounded-xl p-6 shadow-lg">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+            <div>
+              <h2 className="font-bold text-xl mb-2 text-cinema-black">{showtimeDetails.movie?.title}</h2>
+              <p className="text-cinema-gray mb-1">Hall: {showtimeDetails.hall?.name}</p>
+              <p className="text-cinema-gray">Time: {new Date(showtimeDetails.start_time).toLocaleString()}</p>
+            </div>
+            
+            <div className="mt-4 md:mt-0 md:text-right">
+              <p className="text-cinema-gray mb-1">Price per seat: 
+                <span className="font-semibold text-cinema-black ml-1">${showtimeDetails.price}</span>
+              </p>
+              <p className="font-semibold mt-2 text-cinema-black">
+                Selected: {selectedSeats.length} {selectedSeats.length === 1 ? 'seat' : 'seats'}
+              </p>
+              {selectedSeats.length > 0 && (
+                <p className="font-bold text-lg text-cinema-red-dark">Total: ${totalPrice.toFixed(2)}</p>
+              )}
+            </div>
+          </div>
         </div>
       )}
       
       <div className="mb-8">
-        <div className="w-full max-w-2xl mx-auto bg-gray-200 p-6 rounded-lg">
-          <div className="mb-6 text-center">
-            <div className="w-1/2 h-2 bg-gray-400 mx-auto mb-6 rounded"></div>
-            <p className="text-sm text-gray-600">SCREEN</p>
+        <div className="w-full max-w-3xl mx-auto bg-white p-6 rounded-xl shadow-lg">
+          <div className="mb-8 text-center">
+            <div className="w-2/3 h-2 bg-cinema-red-dark mx-auto mb-6 rounded"></div>
+            <p className="text-sm text-cinema-gray uppercase">SCREEN</p>
           </div>
           
-          <div className="space-y-4">
+          <div className="space-y-4 mt-10">
             {Object.keys(seatsByRow).sort((a, b) => a - b).map(rowNum => (
               <div key={rowNum} className="flex justify-center space-x-2">
-                <div className="w-6 flex items-center justify-center text-gray-600">{rowNum}</div>
+                <div className="w-8 flex items-center justify-center text-cinema-gray-light bg-cinema-gray rounded-l-lg">
+                  {rowNum}
+                </div>
                 <div className="flex space-x-2">
                   {seatsByRow[rowNum]
                     .sort((a, b) => a.number - b.number)
@@ -131,12 +148,12 @@ const SeatSelection = () => {
                         onClick={() => handleSeatSelect(seat)}
                         disabled={seat.is_reserved}
                         className={`
-                          w-10 h-10 rounded-t-lg flex items-center justify-center
+                          w-10 h-10 flex items-center justify-center rounded transition-all
                           ${seat.is_reserved 
-                            ? 'bg-gray-400 cursor-not-allowed' 
+                            ? 'bg-cinema-gray text-white cursor-not-allowed' 
                             : selectedSeats.includes(seat.id)
-                              ? 'bg-green-500 text-white'
-                              : 'bg-blue-100 hover:bg-blue-200'
+                              ? 'bg-cinema-red-dark text-white shadow-md scale-105 hover:bg-cinema-red'
+                              : 'bg-cinema-gray-light hover:bg-cinema-red-light'
                           }
                         `}
                       >
@@ -152,16 +169,18 @@ const SeatSelection = () => {
       
       <div className="flex items-center justify-center mb-8 space-x-6">
         <div className="flex items-center">
-          <div className="w-6 h-6 bg-blue-100 mr-2"></div>
-          <span>Available</span>
+          <div className="w-6 h-6 bg-cinema-gray-light mr-2 rounded"></div>
+          <span className="text-cinema-black">Available</span>
         </div>
         <div className="flex items-center">
-          <div className="w-6 h-6 bg-green-500 mr-2"></div>
-          <span>Selected</span>
+          <div className="w-6 h-6 bg-cinema-red-dark text-white mr-2 rounded flex items-center justify-center">
+            <span className="text-xs">✓</span>
+          </div>
+          <span className="text-cinema-black">Selected</span>
         </div>
         <div className="flex items-center">
-          <div className="w-6 h-6 bg-gray-400 mr-2"></div>
-          <span>Reserved</span>
+          <div className="w-6 h-6 bg-cinema-gray mr-2 rounded"></div>
+          <span className="text-cinema-black">Reserved</span>
         </div>
       </div>
       
@@ -170,10 +189,10 @@ const SeatSelection = () => {
           onClick={handleConfirmSelection}
           disabled={selectedSeats.length === 0}
           className={`
-            py-2 px-6 rounded font-bold
+            py-3 px-8 rounded-lg font-bold transition-colors
             ${selectedSeats.length > 0 
-              ? 'bg-blue-600 text-white hover:bg-blue-700' 
-              : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              ? 'bg-cinema-red-dark text-white hover:bg-cinema-red shadow-lg' 
+              : 'bg-cinema-gray text-white cursor-not-allowed'
             }
           `}
         >
