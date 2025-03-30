@@ -5,18 +5,12 @@ const ThemeContext = createContext();
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-  // Check for saved theme preference or use system preference
-  const getInitialTheme = () => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme;
-    }
-    
-    // Check system preference
+  // Always use system preference
+  const getSystemTheme = () => {
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   };
 
-  const [theme, setTheme] = useState(getInitialTheme);
+  const [theme, setTheme] = useState(getSystemTheme);
 
   // Apply theme to HTML element
   useEffect(() => {
@@ -27,9 +21,6 @@ export const ThemeProvider = ({ children }) => {
     
     // Add current theme class
     root.classList.add(theme);
-    
-    // Save theme preference
-    localStorage.setItem('theme', theme);
   }, [theme]);
 
   // Listen for system preference changes
@@ -37,21 +28,19 @@ export const ThemeProvider = ({ children }) => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     
     const handleChange = () => {
-      if (!localStorage.getItem('theme')) {
-        setTheme(mediaQuery.matches ? 'dark' : 'light');
-      }
+      setTheme(mediaQuery.matches ? 'dark' : 'light');
     };
     
+    // Add event listener
     mediaQuery.addEventListener('change', handleChange);
+    
+    // Clean up
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
-  };
-
+  // Return only the theme without toggle function
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme }}>
       {children}
     </ThemeContext.Provider>
   );
