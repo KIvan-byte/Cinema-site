@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import Movies from './pages/Movies';
+import About from './pages/About';
 import MovieDetails from './pages/MovieDetails';
 import SeatSelection from './pages/SeatSelection';
 import Checkout from './pages/Checkout';
@@ -25,6 +26,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/movies" element={<Movies />} />
+              <Route path="/about" element={<About />} />
               <Route path="/movie/:id" element={<MovieDetails />} />
               <Route 
                 path="/seats/:showtimeId" 
