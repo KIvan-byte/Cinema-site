@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { useTheme } from '../context/ThemeContext';
 
 const Navbar = () => {
   const { isAuthenticated, isAdmin, currentUser, logout } = useAuth();
-  const { theme } = useTheme(); // Keep theme reference but remove toggleTheme
   const navigate = useNavigate();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
