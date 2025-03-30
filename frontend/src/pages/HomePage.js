@@ -118,33 +118,35 @@ const HomePage = () => {
               
               {/* Featured Movie Info (if movies available) */}
               {movies.length > 0 && (
-                <div className="absolute bottom-8 left-4 right-4 md:left-8 md:right-auto bg-black bg-opacity-75 backdrop-blur-sm p-4 rounded-xl animate-fade-in-up animation-delay-600 max-w-lg">
-                  <h3 className="text-white font-bold text-2xl mb-2">
-                    {movies[currentSlide].title}
-                  </h3>
-                  <p className="text-gray-300 line-clamp-2 mb-4">
-                    {movies[currentSlide].description}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <span className="bg-cinema-red px-3 py-1 rounded-full text-white text-sm mr-3">
-                        {movies[currentSlide].duration} min
-                      </span>
-                      {movies[currentSlide].rating && (
-                        <div className="flex items-center">
-                          <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                          <span className="ml-1 text-white">{movies[currentSlide].rating}</span>
-                        </div>
-                      )}
+                <div className="absolute bottom-0 top-0 right-4 md:right-8 flex items-center max-w-lg">
+                  <div className="bg-black bg-opacity-75 backdrop-blur-sm p-4 rounded-xl animate-fade-in-up animation-delay-600">
+                    <h3 className="text-white font-bold text-2xl mb-2">
+                      {movies[currentSlide].title}
+                    </h3>
+                    <p className="text-gray-300 line-clamp-2 mb-4">
+                      {movies[currentSlide].description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <span className="bg-cinema-red px-3 py-1 rounded-full text-white text-sm mr-3">
+                          {movies[currentSlide].duration} min
+                        </span>
+                        {movies[currentSlide].rating && (
+                          <div className="flex items-center">
+                            <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <span className="ml-1 text-white">{movies[currentSlide].rating}</span>
+                          </div>
+                        )}
+                      </div>
+                      <Link 
+                        to={`/movie/${movies[currentSlide].id}`}
+                        className="text-cinema-red hover:text-white hover:bg-cinema-red px-4 py-2 rounded-lg transition-colors font-medium"
+                      >
+                        {t("home.nowShowing.bookNowBtn")}
+                      </Link>
                     </div>
-                    <Link 
-                      to={`/movie/${movies[currentSlide].id}`}
-                      className="text-cinema-red hover:text-white hover:bg-cinema-red px-4 py-2 rounded-lg transition-colors font-medium"
-                    >
-                      {t("home.nowShowing.bookNowBtn")}
-                    </Link>
                   </div>
                 </div>
               )}
