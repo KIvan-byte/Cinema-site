@@ -207,6 +207,7 @@ const pl = {
     },
     facilities: {
       title: 'Nasze Udogodnienia',
+      intro: 'Odkryj wyjątkowe udogodnienia zaprojektowane, aby wzbogacić Twoje kinowe doświadczenie.',
       auditoriums: {
         title: 'Luksusowe Sale',
         desc: '8 nowoczesnych sal kinowych z projekcją laserową 4K, systemem Dolby Atmos i ultra komfortowymi fotelami.',

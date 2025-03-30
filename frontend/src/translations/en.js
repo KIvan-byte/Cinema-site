@@ -206,6 +206,7 @@ const en = {
     },
     facilities: {
       title: 'Our Facilities',
+      intro: 'Discover premium amenities designed to enhance your cinema experience.',
       auditoriums: {
         title: 'Premium Auditoriums',
         desc: 'Our 8 state-of-the-art auditoriums feature 4K laser projection, Dolby Atmos sound, and ultra-comfortable reclining seats with ample legroom.',
@@ -275,7 +276,6 @@ const en = {
       viewMovies: "View Movies", // new placeholder
       contactUs: "Contact Us" // new placeholder
     }
-    // ...existing keys...
   },
   
   // Common
