@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
+import Movies from './pages/Movies';
 import MovieDetails from './pages/MovieDetails';
 import SeatSelection from './pages/SeatSelection';
 import Checkout from './pages/Checkout';
@@ -10,6 +11,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import AdminDashboard from './pages/AdminDashboard';
+import LoadingSpinner from './components/LoadingSpinner';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import './App.css';
 
@@ -22,6 +24,7 @@ const App = () => {
           <div className="container mx-auto px-4 py-8 flex-grow">
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/movies" element={<Movies />} />
               <Route path="/movie/:id" element={<MovieDetails />} />
               <Route 
                 path="/seats/:showtimeId" 
@@ -69,7 +72,11 @@ const App = () => {
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
   
-  if (loading) return <div className="text-center py-10">Loading...</div>;
+  if (loading) return (
+    <div className="text-center py-10">
+      <LoadingSpinner size="medium" color="cinema-red" />
+    </div>
+  );
   
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
@@ -81,7 +88,11 @@ const ProtectedRoute = ({ children }) => {
 const AdminRoute = ({ children }) => {
   const { isAuthenticated, isAdmin, loading } = useAuth();
   
-  if (loading) return <div className="text-center py-10">Loading...</div>;
+  if (loading) return (
+    <div className="text-center py-10">
+      <LoadingSpinner size="medium" color="cinema-red" />
+    </div>
+  );
   
   if (!isAuthenticated || !isAdmin) {
     return <Navigate to="/login" />;

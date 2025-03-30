@@ -7,23 +7,18 @@ module.exports = {
     extend: {
       colors: {
         // Primary red colors
-        'cinema-red': {
-          light: '#fc9c9c', // light red
-          DEFAULT: '#fc6464', // medium red
-          dark: '#fc1c1c', // deep red
-        },
+        'cinema-red': '#e53e3e',
+        'cinema-red-dark': '#c53030',
+        'cinema-red-light': '#fed7d7',
         // Contrast colors
-        'cinema-black': '#1c1c1c',
+        'cinema-black': '#2d3748',
         // Orange accents
         'cinema-orange': {
           DEFAULT: '#ff8c42', // warm orange
           light: '#ffae63', // soft peach
         },
         // Neutral tones
-        'cinema-gray': {
-          light: '#e0e0e0',
-          DEFAULT: '#b0b0b0',
-        }
+        'cinema-gray': '#718096',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

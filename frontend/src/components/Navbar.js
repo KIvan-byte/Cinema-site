@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
   const { isAuthenticated, isAdmin, currentUser, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
     navigate('/login');
   };
+
+  const navLinks = [
+    { path: '/', label: 'Home' },
+    { path: '/movies', label: 'Movies' },
+  ];
 
   return (
     <nav className="bg-cinema-red-dark text-white shadow-lg">
@@ -25,7 +31,19 @@ const Navbar = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link to="/" className="font-medium hover:text-cinema-orange transition duration-150">Home</Link>
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`font-medium transition duration-150 ${
+                  location.pathname === link.path
+                    ? 'text-cinema-orange border-b-2 border-cinema-orange'
+                    : 'hover:text-cinema-orange'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
             
             {isAuthenticated ? (
               <>
@@ -81,13 +99,16 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden pt-4 pb-2 space-y-3">
-            <Link 
-              to="/" 
-              className="block py-2 font-medium hover:bg-cinema-red"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Home
-            </Link>
+            {navLinks.map((link) => (
+              <Link 
+                key={link.path}
+                to={link.path}
+                className="block py-2 font-medium hover:bg-cinema-red"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
             
             {isAuthenticated ? (
               <>
