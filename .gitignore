@@ -1,0 +1,85 @@
+# Python specific
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+cinema/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# React/Node specific
+node_modules/
+/frontend/build
+/frontend/coverage
+/frontend/.DS_Store
+/frontend/.env
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+.env
+
+# Log files
+*.log
+logs/
+log/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Media files (usually you don't want to commit these)
+*.mp4
+*.mov
+*.mp3
+*.wav
+*.avi
+*.mkv
+
+# Data files
+*.csv
+*.dat
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!public/*.json
+!src/*.json
+
+# Compiled files
+*.class
+*.dll
+*.exe
+*.o
+*.out
+
+# Distribution / packaging
+dist/
+build/
