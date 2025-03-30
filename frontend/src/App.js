@@ -15,60 +15,63 @@ import AdminDashboard from './pages/AdminDashboard';
 import LoadingSpinner from './components/LoadingSpinner';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider } from './context/LanguageContext'; // New import
 import './App.css';
 
 const App = () => {
   return (
     <Router>
       <ThemeProvider>
-        <AuthProvider>
-          <div className="min-h-screen bg-gray-100 dark:bg-dark-bg-primary text-gray-900 dark:text-dark-text-primary transition-colors duration-300 flex flex-col">
-            <Navbar />
-            <div className="container mx-auto px-4 py-8 flex-grow">
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/movies" element={<Movies />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/movie/:id" element={<MovieDetails />} />
-                <Route 
-                  path="/seats/:showtimeId" 
-                  element={
-                    <ProtectedRoute>
-                      <SeatSelection />
-                    </ProtectedRoute>
-                  } 
-                />
-                <Route 
-                  path="/checkout/:reservationId" 
-                  element={
-                    <ProtectedRoute>
-                      <Checkout />
-                    </ProtectedRoute>
-                  } 
-                />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route 
-                  path="/profile" 
-                  element={
-                    <ProtectedRoute>
-                      <Profile />
-                    </ProtectedRoute>
-                  } 
-                />
-                <Route 
-                  path="/admin/*" 
-                  element={
-                    <AdminRoute>
-                      <AdminDashboard />
-                    </AdminRoute>
-                  } 
-                />
-              </Routes>
+        <LanguageProvider> {/* Wrap with LanguageProvider */}
+          <AuthProvider>
+            <div className="min-h-screen bg-gray-100 dark:bg-dark-bg-primary text-gray-900 dark:text-dark-text-primary transition-colors duration-300 flex flex-col">
+              <Navbar />
+              <div className="container mx-auto px-4 py-8 flex-grow">
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/movies" element={<Movies />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/movie/:id" element={<MovieDetails />} />
+                  <Route 
+                    path="/seats/:showtimeId" 
+                    element={
+                      <ProtectedRoute>
+                        <SeatSelection />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/checkout/:reservationId" 
+                    element={
+                      <ProtectedRoute>
+                        <Checkout />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route 
+                    path="/profile" 
+                    element={
+                      <ProtectedRoute>
+                        <Profile />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/admin/*" 
+                    element={
+                      <AdminRoute>
+                        <AdminDashboard />
+                      </AdminRoute>
+                    } 
+                  />
+                </Routes>
+              </div>
+              <Footer />
             </div>
-            <Footer />
-          </div>
-        </AuthProvider>
+          </AuthProvider>
+        </LanguageProvider>
       </ThemeProvider>
     </Router>
   );

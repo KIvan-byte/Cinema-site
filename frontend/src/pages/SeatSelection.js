@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../services/api';
+import { useLanguage } from '../context/LanguageContext';
 
 const SeatSelection = () => {
   const { showtimeId } = useParams();
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const [seats, setSeats] = useState([]);
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [showtimeDetails, setShowtimeDetails] = useState(null);
@@ -26,13 +28,13 @@ const SeatSelection = () => {
         
         setLoading(false);
       } catch (err) {
-        setError('Failed to load seat information');
+        setError(t("seatSelection.fetchError") || 'Failed to load seat information');
         setLoading(false);
       }
     };
 
     fetchData();
-  }, [showtimeId]);
+  }, [showtimeId, t]);
 
   const handleSeatSelect = (seat) => {
     if (seat.is_reserved) return;
@@ -42,7 +44,7 @@ const SeatSelection = () => {
         return prevSelectedSeats.filter(id => id !== seat.id);
       } 
       else if (prevSelectedSeats.length >= MAX_SEATS) {
-        alert(`You cannot select more than ${MAX_SEATS} seats at once`);
+        alert(`${t("seatSelection.maxSeatsAlert")} ${MAX_SEATS}`);
         return prevSelectedSeats;
       } 
       else {
@@ -53,7 +55,7 @@ const SeatSelection = () => {
 
   const handleConfirmSelection = async () => {
     if (selectedSeats.length === 0) {
-      alert('Please select at least one seat');
+      alert(t("seatSelection.selectAtLeastOne"));
       return;
     }
 
@@ -65,7 +67,7 @@ const SeatSelection = () => {
       
       navigate(`/checkout/${response.data.id}`);
     } catch (err) {
-      setError('Failed to reserve the seats. Please try again.');
+      setError(t("seatSelection.confirmError") || 'Failed to reserve seats. Please try again.');
     }
   };
 
@@ -100,7 +102,7 @@ const SeatSelection = () => {
 
   return (
     <div className="container mx-auto px-4 py-6">
-      <h1 className="text-2xl md:text-3xl font-bold mb-6 text-cinema-black">Select Your Seats</h1>
+      <h1 className="text-2xl md:text-3xl font-bold mb-6 text-cinema-black">{t("seatSelection.title")}</h1>
       
       {showtimeDetails && (
         <div className="mb-8 bg-white rounded-xl p-6 shadow-lg">
@@ -197,8 +199,8 @@ const SeatSelection = () => {
           `}
         >
           {selectedSeats.length > 0 
-            ? `Confirm Selection (${selectedSeats.length} ${selectedSeats.length === 1 ? 'seat' : 'seats'})` 
-            : 'Select at least one seat'
+            ? t("seatSelection.confirmButton", {count: selectedSeats.length}) 
+            : t("seatSelection.noSeatSelected")
           }
         </button>
       </div>

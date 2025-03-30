@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 import api from '../services/api';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const Movies = () => {
+  const { t } = useLanguage();
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -16,13 +18,13 @@ const Movies = () => {
   
   // Sample genres - ideally these would come from your API
   const genres = [
-    { id: 'all', name: 'All Genres' },
-    { id: 'action', name: 'Action' },
-    { id: 'comedy', name: 'Comedy' },
-    { id: 'drama', name: 'Drama' },
-    { id: 'horror', name: 'Horror' },
-    { id: 'sci-fi', name: 'Sci-Fi' },
-    { id: 'animation', name: 'Animation' },
+    { id: 'all', name: t("movies.genres.all") || 'All Genres' },
+    { id: 'action', name: t("movies.genres.action") || 'Action' },
+    { id: 'comedy', name: t("movies.genres.comedy") || 'Comedy' },
+    { id: 'drama', name: t("movies.genres.drama") || 'Drama' },
+    { id: 'horror', name: t("movies.genres.horror") || 'Horror' },
+    { id: 'sci-fi', name: t("movies.genres.sci-fi") || 'Sci-Fi' },
+    { id: 'animation', name: t("movies.genres.animation") || 'Animation' },
   ];
   
   // Fetch movies from API
@@ -38,13 +40,13 @@ const Movies = () => {
         setLoading(false);
       } catch (err) {
         console.error('Error fetching movies:', err);
-        setError(`Failed to fetch movies: ${err.message}`);
+        setError(`${t("movies.error.message")}: ${err.message}`);
         setLoading(false);
       }
     };
 
     fetchMovies();
-  }, [filters]); // Re-fetch when filters change
+  }, [filters, t]); // Re-fetch when filters change
   
   // Filter and sort movies based on user selections
   const filteredMovies = movies.filter(movie => {
@@ -108,13 +110,13 @@ const Movies = () => {
     return (
       <div className="text-center py-16 px-4">
         <div className="bg-red-100 border border-cinema-red text-cinema-red-dark p-6 rounded-lg inline-block max-w-lg">
-          <h3 className="text-xl font-bold mb-2">Error Loading Movies</h3>
+          <h3 className="text-xl font-bold mb-2">{t("movies.error.title")}</h3>
           <p>{error}</p>
           <button 
             onClick={() => window.location.reload()} 
             className="mt-4 bg-cinema-red hover:bg-cinema-red-dark text-white py-2 px-4 rounded transition-colors duration-300"
           >
-            Try Again
+            {t("movies.error.tryAgain")}
           </button>
         </div>
       </div>
@@ -128,15 +130,14 @@ const Movies = () => {
         <div className="absolute inset-0 opacity-20">
           <img 
             src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-            alt="Movies background" 
+            alt={t("movies.hero.alt") || "Movies background"} 
             className="w-full h-full object-cover"
           />
         </div>
         <div className="container mx-auto relative z-10">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Movie Collection</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t("movies.hero.title")}</h1>
           <p className="text-xl max-w-3xl">
-            Discover our curated selection of the latest blockbusters, timeless classics, and independent gems. 
-            Find your next favorite film and book your tickets online.
+            {t("movies.hero.description")}
           </p>
         </div>
       </div>
@@ -150,7 +151,7 @@ const Movies = () => {
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Search for movies..."
+                  placeholder={t("movies.search") || "Search for movies..."}
                   value={searchQuery}
                   onChange={handleSearchChange}
                   className="w-full py-3 px-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red focus:border-transparent"
@@ -188,10 +189,10 @@ const Movies = () => {
                 className="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cinema-red focus:border-transparent appearance-none bg-white"
                 style={{ backgroundImage: "url('data:image/svg+xml;charset=US-ASCII,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"%23666\"><path fill-rule=\"evenodd\" d=\"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z\" clip-rule=\"evenodd\" /></svg>')", backgroundPosition: "right 1rem center", backgroundRepeat: "no-repeat", backgroundSize: "1.5em 1.5em", paddingRight: "3rem" }}
               >
-                <option value="latest">Latest Releases</option>
-                <option value="a-z">A-Z</option>
-                <option value="z-a">Z-A</option>
-                <option value="rating">Highest Rated</option>
+                <option value="latest">{t("movies.sort.latest")}</option>
+                <option value="a-z">{t("movies.sort.a-z")}</option>
+                <option value="z-a">{t("movies.sort.z-a")}</option>
+                <option value="rating">{t("movies.sort.rating")}</option>
               </select>
             </div>
           </div>
@@ -206,7 +207,7 @@ const Movies = () => {
                 onChange={handleShowingToggle}
               />
               <div className="relative w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-cinema-red-light dark:peer-focus:ring-cinema-red-dark rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cinema-red"></div>
-              <span className="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">Now Showing Only</span>
+              <span className="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">{t("movies.showingOnly")}</span>
             </label>
           </div>
         </div>
@@ -214,7 +215,7 @@ const Movies = () => {
         {/* Results Count with dark mode */}
         <div className="mb-6">
           <p className="text-gray-600 dark:text-gray-400">
-            {filteredMovies.length} {filteredMovies.length === 1 ? 'movie' : 'movies'} found
+            {filteredMovies.length} {filteredMovies.length === 1 ? t("movies.result.single") : t("movies.result.multiple")}
           </p>
         </div>
         
@@ -242,7 +243,7 @@ const Movies = () => {
                     />
                     {movie.now_showing && (
                       <div className="absolute top-4 left-0 bg-cinema-red text-white py-1 px-4 rounded-r-full text-sm font-bold shadow-lg">
-                        Now Showing
+                        {t("movies.nowShowing")}
                       </div>
                     )}
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
@@ -272,7 +273,7 @@ const Movies = () => {
                     </p>
                     <div className="mt-4 flex justify-between items-center">
                       <span className="inline-block bg-cinema-red-light text-cinema-red-dark px-3 py-1 text-sm font-medium rounded-full">
-                        Book Now
+                        {t("movies.bookNow")}
                       </span>
                       {movie.genres && movie.genres.length > 0 && (
                         <span className="text-xs text-cinema-gray dark:text-gray-400">
@@ -290,8 +291,8 @@ const Movies = () => {
             <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-1">No Movies Found</h3>
-            <p className="text-gray-500 dark:text-gray-400">Try adjusting your search or filter criteria</p>
+            <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-1">{t("movies.noResults.title")}</h3>
+            <p className="text-gray-500 dark:text-gray-400">{t("movies.noResults.description")}</p>
           </div>
         )}
       </div>

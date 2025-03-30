@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import api from '../services/api';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
+import { useLanguage } from '../context/LanguageContext';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 
 const HomePage = () => {
+  const { t } = useLanguage();
   const [movies, setMovies] = useState([]);
   const [featuredMovies, setFeaturedMovies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -45,23 +47,23 @@ const HomePage = () => {
   const features = [
     {
       icon: "🎬",
-      title: "Latest Releases",
-      description: "Experience the newest blockbusters in stunning quality"
+      title: t("home.features.latest") || "Latest Releases",
+      description: t("home.features.latestDesc") || "Experience the newest blockbusters in stunning quality"
     },
     {
       icon: "🍿",
-      title: "Premium Concessions",
-      description: "Gourmet popcorn, craft beverages, and chef-prepared snacks"
+      title: t("home.features.concessions") || "Premium Concessions",
+      description: t("home.features.concessionsDesc") || "Gourmet popcorn, craft beverages, and chef-prepared snacks"
     },
     {
       icon: "🛋️",
-      title: "Luxury Seating",
-      description: "Reclinable leather seats with extra legroom and personal tables"
+      title: t("home.features.seating") || "Luxury Seating",
+      description: t("home.features.seatingDesc") || "Reclinable leather seats with extra legroom and personal tables"
     },
     {
       icon: "🔊",
-      title: "Dolby Atmos",
-      description: "Immersive sound technology that places you inside the action"
+      title: t("home.features.sound") || "Dolby Atmos",
+      description: t("home.features.soundDesc") || "Immersive sound technology that places you inside the action"
     }
   ];
 
@@ -79,13 +81,13 @@ const HomePage = () => {
     return (
       <div className="text-center py-16 px-4">
         <div className="bg-red-100 border border-cinema-red text-cinema-red-dark p-6 rounded-lg inline-block max-w-lg">
-          <h3 className="text-xl font-bold mb-2">Error Loading Movies</h3>
+          <h3 className="text-xl font-bold mb-2">{t("home.error.title")}</h3>
           <p>{error}</p>
           <button 
             onClick={() => window.location.reload()} 
             className="mt-4 bg-cinema-red hover:bg-cinema-red-dark text-white py-2 px-4 rounded transition-colors duration-300"
           >
-            Try Again
+            {t("home.error.tryAgainBtn")}
           </button>
         </div>
       </div>
@@ -134,7 +136,7 @@ const HomePage = () => {
                     to={`/movie/${movie.id}`} 
                     className="bg-cinema-red hover:bg-cinema-red-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300"
                   >
-                    Book Tickets
+                    {t("home.hero.browseBtn")}
                   </Link>
                 </div>
               </SwiperSlide>
@@ -143,13 +145,13 @@ const HomePage = () => {
         ) : (
           <div className="w-full h-[400px] bg-gradient-to-r from-cinema-red to-cinema-red-dark flex items-center justify-center rounded-xl">
             <div className="text-center text-white p-8">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Welcome to Cinema Tickets</h1>
-              <p className="text-xl md:text-2xl mb-8">Your premier destination for the latest blockbusters</p>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">{t("home.hero.welcome")}</h1>
+              <p className="text-xl md:text-2xl mb-8">{t("home.hero.subtitle")}</p>
               <Link 
                 to="/movies" 
                 className="bg-white text-cinema-red hover:bg-gray-100 font-bold py-3 px-6 rounded-lg transition duration-300"
               >
-                Browse All Movies
+                {t("home.hero.browseBtn")}
               </Link>
             </div>
           </div>
@@ -175,18 +177,18 @@ const HomePage = () => {
               </div>
             </div>
             <div className="md:w-1/2 md:pl-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-cinema-black dark:text-white">Experience Movies Like Never Before</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-cinema-black dark:text-white">{t("home.about.title")}</h2>
               <p className="text-gray-600 dark:text-gray-300 mb-6 text-lg">
-                Welcome to our state-of-the-art cinema, where movie magic comes alive! Since 2005, we've been dedicated to providing the ultimate movie experience with cutting-edge technology and unparalleled comfort.
+                {t("home.about.description1")}
               </p>
               <p className="text-gray-600 dark:text-gray-300 mb-8 text-lg">
-                Our theaters feature crystal-clear projection, immersive Dolby Atmos sound, and luxurious seating that will transform your movie-watching experience. Whether you're a film enthusiast or looking for a perfect date night, our cinema offers the perfect setting.
+                {t("home.about.description2")}
               </p>
               <Link 
                 to="/about" 
                 className="bg-cinema-black dark:bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300 inline-flex items-center"
               >
-                Learn More About Us
+                {t("home.about.learnMoreBtn")}
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
                   className="h-5 w-5 ml-2" 
@@ -205,12 +207,12 @@ const HomePage = () => {
       <section className="mb-16">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl font-bold text-cinema-black dark:text-white">Now Showing</h2>
+            <h2 className="text-3xl font-bold text-cinema-black dark:text-white">{t("home.nowShowing.title")}</h2>
             <Link 
               to="/movies" 
               className="text-cinema-red hover:text-cinema-red-dark font-semibold inline-flex items-center"
             >
-              View All Movies
+              {t("home.nowShowing.viewAllBtn")}
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 className="h-5 w-5 ml-1" 
@@ -251,7 +253,7 @@ const HomePage = () => {
                     </p>
                     <div className="mt-4 flex justify-between items-center">
                       <span className="inline-block bg-cinema-red-light text-cinema-red-dark px-3 py-1 text-sm font-medium rounded-full">
-                        Book Now
+                        {t("home.nowShowing.bookNowBtn")}
                       </span>
                       {movie.rating && (
                         <div className="flex items-center">
@@ -277,7 +279,7 @@ const HomePage = () => {
       {/* Cinema Features/Amenities */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md mb-16 transition-colors duration-300">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-cinema-black dark:text-white">Why Choose Our Cinema</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-cinema-black dark:text-white">{t("home.features.title")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <div key={index} className="bg-white dark:bg-dark-bg-secondary p-8 rounded-xl shadow-md text-center transform transition duration-300 hover:-translate-y-2 hover:shadow-lg">
@@ -294,12 +296,12 @@ const HomePage = () => {
       <section className="py-16 bg-cinema-red rounded-xl text-white shadow-md">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Stay Updated With Our Latest Releases</h2>
-            <p className="text-lg mb-8">Subscribe to our newsletter and get updates on new movies, special offers, and exclusive events.</p>
+            <h2 className="text-3xl font-bold mb-4">{t("home.newsletter.title")}</h2>
+            <p className="text-lg mb-8">{t("home.newsletter.description")}</p>
             <form className="flex flex-col sm:flex-row gap-4">
               <input 
                 type="email" 
-                placeholder="Enter your email address" 
+                placeholder={t("home.newsletter.placeholder")} 
                 className="flex-grow py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-gray-800"
                 required
               />
@@ -307,7 +309,7 @@ const HomePage = () => {
                 type="submit" 
                 className="bg-white text-cinema-red hover:bg-gray-100 py-3 px-6 rounded-lg font-bold transition duration-300"
               >
-                Subscribe
+                {t("home.newsletter.subscribeBtn")}
               </button>
             </form>
           </div>

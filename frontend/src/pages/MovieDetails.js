@@ -3,11 +3,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import api from '../services/api';
 import { useAuth } from '../context/AuthContext';
+import { useLanguage } from '../context/LanguageContext';
 
 const MovieDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
+  const { t } = useLanguage();
   const [movie, setMovie] = useState(null);
   const [showtimes, setShowtimes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -75,7 +77,7 @@ const MovieDetails = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center py-20">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cinema-red"></div>
+        {t("common.loading")}
       </div>
     );
   }
@@ -84,7 +86,7 @@ const MovieDetails = () => {
     return (
       <div className="text-center py-10 px-4">
         <div className="bg-red-100 border border-cinema-red text-cinema-red-dark p-4 rounded-lg inline-block">
-          {error || 'Movie not found'}
+          {error || t("movie.notFound")}
         </div>
       </div>
     );
@@ -114,7 +116,7 @@ const MovieDetails = () => {
             </div>
             
             <div className="mb-6">
-              <h2 className="text-xl font-semibold mb-2 text-cinema-black">Description</h2>
+              <h2 className="text-xl font-semibold mb-2 text-cinema-black">{t("movie.description")}</h2>
               <p className="text-cinema-black">{movie.description}</p>
             </div>
           </div>
@@ -123,10 +125,10 @@ const MovieDetails = () => {
       
       {/* Showtimes Section */}
       <div className="bg-white rounded-xl shadow-lg p-6">
-        <h2 className="text-2xl font-semibold mb-6 text-cinema-black">Showtimes</h2>
+        <h2 className="text-2xl font-semibold mb-6 text-cinema-black">{t("movie.showtimes")}</h2>
         
         {showtimes.length === 0 ? (
-          <p className="text-cinema-gray">No showtimes available for this movie.</p>
+          <p className="text-cinema-gray">{t("movie.noShowtimes")}</p>
         ) : (
           <>
             {/* Date Selection */}
@@ -175,7 +177,7 @@ const MovieDetails = () => {
                       onClick={() => handleSelectShowtime(showtime.id)}
                       className="w-full bg-cinema-red-dark text-white py-2 px-4 rounded-lg hover:bg-cinema-red transition-colors font-medium"
                     >
-                      Select Seats
+                      {t("movie.selectSeats")}
                     </button>
                   </div>
                 ))}

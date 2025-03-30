@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useLanguage } from '../context/LanguageContext';
 
 const Navbar = () => {
   const { isAuthenticated, isAdmin, currentUser, logout } = useAuth();
+  const { t, toggleLanguage, language } = useLanguage(); // Using language functions
   const navigate = useNavigate();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -13,10 +15,11 @@ const Navbar = () => {
     navigate('/login');
   };
 
+  // Replace hardcoded labels with translation placeholders
   const navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/movies', label: 'Movies' },
-    { path: '/about', label: 'About Us' }
+    { path: '/', label: t("nav.home") },
+    { path: '/movies', label: t("nav.movies") },
+    { path: '/about', label: t("nav.about") }
   ];
 
   return (
@@ -29,7 +32,7 @@ const Navbar = () => {
               <span>TICKETS</span>
             </Link>
           </div>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
@@ -45,20 +48,27 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
-            
-            {/* Theme toggle button removed */}
-            
+
+            {/* Language Switcher Button */}
+            <button onClick={toggleLanguage} className="text-sm hover:text-cinema-orange">
+              {language === 'en' ? 'Polski' : 'English'}
+            </button>
+
             {isAuthenticated ? (
               <>
-                <Link to="/profile" className="font-medium hover:text-cinema-orange transition duration-150">Profile</Link>
+                <Link to="/profile" className="font-medium hover:text-cinema-orange transition duration-150">
+                  {t("nav.profile")}
+                </Link>
                 {isAdmin && (
-                  <Link to="/admin" className="font-medium hover:text-cinema-orange transition duration-150">Admin</Link>
+                  <Link to="/admin" className="font-medium hover:text-cinema-orange transition duration-150">
+                    {t("nav.admin")}
+                  </Link>
                 )}
                 <button 
                   onClick={handleLogout}
                   className="font-medium hover:text-cinema-orange transition duration-150"
                 >
-                  Logout
+                  {t("nav.logout")}
                 </button>
                 <span className="ml-2 px-3 py-1 bg-white text-cinema-red-dark rounded-full font-medium text-sm">
                   {currentUser?.username}
@@ -66,21 +76,21 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link to="/login" className="font-medium hover:text-cinema-orange transition duration-150">Login</Link>
+                <Link to="/login" className="font-medium hover:text-cinema-orange transition duration-150">
+                  {t("nav.login")}
+                </Link>
                 <Link 
                   to="/register" 
                   className="bg-white text-cinema-red-dark px-4 py-2 rounded-lg font-medium hover:bg-cinema-gray-light hover:text-cinema-red transition duration-150"
                 >
-                  Register
+                  {t("nav.register")}
                 </Link>
               </>
             )}
           </div>
-          
+
           {/* Mobile menu button */}
           <div className="md:hidden">
-            {/* Mobile Theme Toggle removed */}
-            
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-white focus:outline-none"
@@ -100,7 +110,7 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-        
+
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden pt-4 pb-2 space-y-3">
@@ -114,7 +124,12 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
-            
+
+            {/* Mobile Language Switcher */}
+            <button onClick={toggleLanguage} className="block py-2 font-medium hover:bg-cinema-red">
+              {language === 'en' ? 'Polski' : 'English'}
+            </button>
+
             {isAuthenticated ? (
               <>
                 <Link 
@@ -122,7 +137,7 @@ const Navbar = () => {
                   className="block py-2 font-medium hover:bg-cinema-red"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Profile
+                  {t("nav.profile")}
                 </Link>
                 {isAdmin && (
                   <Link 
@@ -130,7 +145,7 @@ const Navbar = () => {
                     className="block py-2 font-medium hover:bg-cinema-red"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Admin
+                    {t("nav.admin")}
                   </Link>
                 )}
                 <button 
@@ -140,10 +155,10 @@ const Navbar = () => {
                   }}
                   className="block w-full text-left py-2 font-medium hover:bg-cinema-red"
                 >
-                  Logout
+                  {t("nav.logout")}
                 </button>
                 <div className="py-2 font-medium">
-                  Signed in as: <span className="font-bold">{currentUser?.username}</span>
+                  {t("common.signedInAs")} <span className="font-bold">{currentUser?.username}</span>
                 </div>
               </>
             ) : (
@@ -153,14 +168,14 @@ const Navbar = () => {
                   className="block py-2 font-medium hover:bg-cinema-red"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Login
+                  {t("nav.login")}
                 </Link>
                 <Link 
                   to="/register" 
                   className="block py-2 font-medium hover:bg-cinema-red"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Register
+                  {t("nav.register")}
                 </Link>
               </>
             )}
