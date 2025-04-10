@@ -57,7 +57,7 @@ The Cinema Ticket Sales System is a comprehensive full-stack web application des
 The Cinema Ticket Sales System follows a modern client-server architecture with clean separation of concerns:
 
 ```
-┌───────────────────┐      HTTP/REST      ┌───────────────────┐
+┌───────────────────┐      HTTP/REST     ┌───────────────────┐
 │                   │<------------------>│                   │
 │  React Frontend   │       JSON         │  FastAPI Backend  │
 │  (SPA)            │                    │                   │
@@ -69,7 +69,6 @@ The Cinema Ticket Sales System follows a modern client-server architecture with 
                                          ┌───────────────────┐
                                          │    SQLite/SQL     │
                                          │    Database       │
-                                         │                   │
                                          └───────────────────┘
 ```
 
@@ -121,20 +120,20 @@ The system uses a relational database model with the following core entities:
      │                 │                  │
      │                 │                  │
      │                 ▼                  │
-     │            ┌──────────┐            │
-     │            │ Showtimes │◄───────────┘
-     │            └────┬─────┘
+     │            ┌───────────┐           │
+     │            │ Showtimes │◄──────────┘
+     │            └────┬──────┘
      │                 │
      ▼                 │
-┌──────────┐           │
-│Reservations│◄────────┘
-└────┬─────┘
+┌──────────────┐       │
+│ Reservations │◄──────┘
+└────┬─────────┘
      │
      │
      ▼
-┌───────────────┐     ┌───────┐
-│ReservationSeats│─────► Seats │
-└───────────────┘     └───────┘
+┌──────────────────┐     ┌────────┐
+│ ReservationSeats │────►│  Seats │
+└──────────────────┘     └────────┘
 ```
 
 ### Key Tables
