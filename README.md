@@ -338,10 +338,38 @@ The translation system uses a custom implementation based on JSON dictionaries f
 
 ## Screenshots
 
-![Home Page](https://via.placeholder.com/800x450?text=Home+Page)
-![Movie Listing](https://via.placeholder.com/800x450?text=Movie+Listing)
-![Seat Selection](https://via.placeholder.com/800x450?text=Seat+Selection)
-![Admin Dashboard](https://via.placeholder.com/800x450?text=Admin+Dashboard)
+### Home Page
+![Home Page](screenshots/homepage.png)
+*The welcoming homepage that showcases currently playing and upcoming movies with an intuitive navigation bar.*
+
+### Movie Listings
+![Movie Listings](screenshots/movie-list.png)
+*Browse all available movies with filtering options by genre, release date, and search functionality.*
+
+### Movie Details
+![Movie Details](screenshots/movie-list-about-movie.png)
+*Detailed view of a selected movie showing synopsis, duration, ratings, and available showtimes.*
+
+### Seat Selection
+![Seat Selection](screenshots/seat-selection.png)
+*Interactive seat map allowing users to select up to 5 seats per booking with real-time availability indicators.*
+
+### Checkout Process
+![Checkout](screenshots/checkout.png)
+*Secure payment processing page with order summary and payment method selection.*
+
+### User Profile
+![User Profile](screenshots/profile.png)
+*Personal user dashboard showing booking history, saved payment methods, and account settings.*
+
+### Admin Dashboard
+![Admin Dashboard](screenshots/admin_panel.png)
+*Comprehensive management interface for administrators with sales analytics and content management tools.*
+
+
+### Mobile Responsive Design
+![Mobile View](screenshots/movie-list-mobile.png)
+*The application is fully responsive and provides an optimal experience on mobile devices.*
 
 ## Future Enhancements
 
