@@ -363,7 +363,7 @@ The translation system uses a custom implementation based on JSON dictionaries f
 *Personal user dashboard showing booking history, saved payment methods, and account settings.*
 
 ### Admin Dashboard
-![Admin Dashboard](screenshots/admin_panel.png)
+![Admin Dashboard](screenshots/admin-panel.png)
 *Comprehensive management interface for administrators with sales analytics and content management tools.*
 
 
