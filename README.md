@@ -4,7 +4,9 @@
 
 The Cinema Ticket Sales System is a comprehensive full-stack web application designed to streamline the process of selling and managing cinema tickets online. This platform caters to both movie-goers seeking a convenient booking experience and cinema administrators needing efficient tools to manage screenings, theaters, and sales.
 
-![Cinema Ticket Sales System](https://via.placeholder.com/1200x600?text=Cinema+Ticket+Sales+System)
+<p align="center">
+  <img src="screenshots/cinema-tickets.png" alt="Cinema Ticket Sales System">
+</p>
 
 ## Table of Contents
 
