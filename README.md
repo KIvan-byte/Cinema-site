@@ -1,5 +1,11 @@
 # Cinema Ticket Sales System
 
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.95.0+-blue)](https://fastapi.tiangolo.com/)
+[![React](https://img.shields.io/badge/React-18.0.0+-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
+[![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-1.4.0+-red)](https://www.sqlalchemy.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-2.2.0+-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ## Overview
 
 The Cinema Ticket Sales System is a comprehensive full-stack web application designed to streamline the process of selling and managing cinema tickets online. This platform caters to both movie-goers seeking a convenient booking experience and cinema administrators needing efficient tools to manage screenings, theaters, and sales.
@@ -51,7 +57,7 @@ The Cinema Ticket Sales System is a comprehensive full-stack web application des
 The Cinema Ticket Sales System follows a modern client-server architecture with clean separation of concerns:
 
 ```
-┌───────────────────┐      HTTP/REST      ┌───────────────────┐
+┌───────────────────┐      HTTP/REST     ┌───────────────────┐
 │                   │<------------------>│                   │
 │  React Frontend   │       JSON         │  FastAPI Backend  │
 │  (SPA)            │                    │                   │
@@ -63,7 +69,6 @@ The Cinema Ticket Sales System follows a modern client-server architecture with 
                                          ┌───────────────────┐
                                          │    SQLite/SQL     │
                                          │    Database       │
-                                         │                   │
                                          └───────────────────┘
 ```
 
@@ -115,20 +120,20 @@ The system uses a relational database model with the following core entities:
      │                 │                  │
      │                 │                  │
      │                 ▼                  │
-     │            ┌──────────┐            │
-     │            │ Showtimes │◄───────────┘
-     │            └────┬─────┘
+     │            ┌───────────┐           │
+     │            │ Showtimes │◄──────────┘
+     │            └────┬──────┘
      │                 │
      ▼                 │
-┌──────────┐           │
-│Reservations│◄────────┘
-└────┬─────┘
+┌──────────────┐       │
+│ Reservations │◄──────┘
+└────┬─────────┘
      │
      │
      ▼
-┌───────────────┐     ┌───────┐
-│ReservationSeats│─────► Seats │
-└───────────────┘     └───────┘
+┌──────────────────┐     ┌────────┐
+│ ReservationSeats │────►│  Seats │
+└──────────────────┘     └────────┘
 ```
 
 ### Key Tables
@@ -385,4 +390,4 @@ The translation system uses a custom implementation based on JSON dictionaries f
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
